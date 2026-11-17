@@ -20,16 +20,18 @@
       --green-bg: #dcfce7;
       --blue: #1d4ed8;
       --blue-bg: #dbeafe;
+      --amber: #b45309;
+      --amber-bg: #fef3c7;
     }
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
     body {
-      margin: 0; padding: 0 0 84px 0;
+      margin: 0; padding: 0 0 88px 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", sans-serif;
       background: var(--bg); color: var(--text); line-height: 1.5;
     }
     header {
       background: linear-gradient(135deg, #6b1d29 0%, #8b2635 60%, #a83848 100%);
-      color: #fff; padding: 18px 16px 14px; position: sticky; top: 0; z-index: 40;
+      color: #fff; padding: 16px 16px 12px; position: sticky; top: 0; z-index: 40;
       box-shadow: 0 2px 10px rgba(0,0,0,0.15);
     }
     header h1 { margin: 0; font-size: 18px; font-weight: 700; letter-spacing: 0.5px; }
@@ -37,7 +39,7 @@
     .day-scroller {
       display: flex; overflow-x: auto; gap: 8px; padding: 10px 12px;
       background: #fff; border-bottom: 1px solid var(--border);
-      position: sticky; top: 68px; z-index: 35; scrollbar-width: none;
+      position: sticky; top: 64px; z-index: 35; scrollbar-width: none;
     }
     .day-scroller::-webkit-scrollbar { display: none; }
     .day-pill {
@@ -61,6 +63,7 @@
     .badge-red { background: var(--primary-light); color: var(--primary); }
     .badge-blue { background: var(--blue-bg); color: var(--blue); }
     .badge-green { background: var(--green-bg); color: var(--green); }
+    .badge-amber { background: var(--amber-bg); color: var(--amber); }
     .depart-banner {
       background: #fffbeb; border-left: 4px solid var(--accent); padding: 10px 12px;
       border-radius: 8px; margin: 10px 0; font-size: 13px; font-weight: 600; color: #92400e;
@@ -73,33 +76,51 @@
     .weather-temp { font-size: 16px; font-weight: 700; color: #0369a1; }
     .notice-box {
       background: #fef2f2; border: 1px solid #fecaca; border-radius: 10px;
-      padding: 10px 12px; font-size: 13px; color: #991b1b; margin-bottom: 10px;
+      padding: 10px 12px; font-size: 13px; color: #991b1b; margin-bottom: 12px;
     }
     .section-title {
-      font-size: 14px; font-weight: 700; color: var(--primary); margin: 12px 0 8px;
+      font-size: 14px; font-weight: 700; color: var(--primary); margin: 14px 0 8px;
       display: flex; align-items: center; gap: 6px;
     }
-    .item-row {
-      display: flex; justify-content: space-between; align-items: center; gap: 10px;
-      padding: 10px 0; border-bottom: 1px dashed var(--border);
+    .timeline {
+      position: relative; padding-left: 18px; border-left: 2px solid #e5e7eb; margin: 8px 0 12px 6px;
     }
-    .item-row:last-child { border-bottom: none; }
-    .item-name { font-size: 14px; font-weight: 500; }
+    .tl-item {
+      position: relative; margin-bottom: 14px; background: #fafafa;
+      border: 1px solid #e5e7eb; border-radius: 10px; padding: 10px 12px;
+    }
+    .tl-item:last-child { margin-bottom: 0; }
+    .tl-dot {
+      position: absolute; left: -25px; top: 14px; width: 12px; height: 12px;
+      border-radius: 50%; background: var(--primary); border: 2px solid #fff;
+      box-shadow: 0 0 0 2px var(--primary);
+    }
+    .tl-dot.food { background: #d97706; box-shadow: 0 0 0 2px #d97706; }
+    .tl-dot.trans { background: #2563eb; box-shadow: 0 0 0 2px #2563eb; }
+    .tl-top {
+      display: flex; justify-content: space-between; align-items: center; gap: 6px; margin-bottom: 4px;
+    }
+    .tl-time {
+      font-size: 13px; font-weight: 800; color: var(--primary);
+      background: var(--primary-light); padding: 2px 8px; border-radius: 6px;
+    }
+    .tl-title { font-size: 14px; font-weight: 700; color: #111827; margin: 4px 0; }
+    .tl-desc { font-size: 13px; color: #4b5563; margin-bottom: 6px; }
     .map-btn {
-      flex: 0 0 auto; background: var(--blue-bg); color: var(--blue); text-decoration: none;
-      padding: 6px 10px; border-radius: 8px; font-size: 12px; font-weight: 600;
+      background: var(--blue-bg); color: var(--blue); text-decoration: none;
+      padding: 5px 10px; border-radius: 8px; font-size: 12px; font-weight: 600;
       display: inline-flex; align-items: center; gap: 4px;
     }
     .hotel-nav-btn {
       display: flex; align-items: center; justify-content: center; gap: 8px;
       width: 100%; background: var(--green); color: #fff; text-decoration: none;
       padding: 14px; border-radius: 12px; font-size: 15px; font-weight: 700;
-      margin-top: 12px; box-shadow: 0 3px 8px rgba(21,128,61,0.25);
+      margin-top: 14px; box-shadow: 0 3px 8px rgba(21,128,61,0.25);
     }
     .ref-chip {
       display: inline-flex; align-items: center; gap: 4px; background: #f3f4f6;
-      border: 1px solid #d1d5db; border-radius: 16px; padding: 5px 10px;
-      font-size: 12px; color: #374151; margin: 4px 4px 0 0; cursor: pointer;
+      border: 1px solid #d1d5db; border-radius: 16px; padding: 6px 11px;
+      font-size: 12px; color: #374151; margin: 4px 4px 0 0; cursor: pointer; font-weight: 600;
     }
     .tab-bar {
       position: fixed; bottom: 0; left: 0; right: 0; background: #fff;
@@ -125,17 +146,19 @@
     .ref-header {
       padding: 12px 14px; font-weight: 700; font-size: 14px; cursor: pointer;
       display: flex; justify-content: space-between; align-items: center; background: #fafafa;
+      gap: 8px;
     }
     .ref-body { padding: 12px 14px; font-size: 13px; border-top: 1px solid var(--border); display: none; }
     .ref-card.open .ref-body { display: block; }
-    .ref-body p { margin: 0 0 8px; }
+    .ref-row { padding: 6px 0; border-bottom: 1px dashed #f3f4f6; }
+    .ref-row:last-child { border-bottom: none; }
     .ref-table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 12px; }
     .ref-table th, .ref-table td { border: 1px solid #e5e7eb; padding: 6px 8px; text-align: left; }
     .ref-table th { background: #f3f4f6; font-weight: 700; }
     .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
     .calc-input { width: 100%; padding: 8px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 15px; }
     .btn-download {
-      background: var(--primary); color: #fff; border: none; padding: 12px 16px;
+      background: var(--primary); color: #fff; border: none; padding: 13px 16px;
       border-radius: 10px; font-size: 14px; font-weight: 700; width: 100%; cursor: pointer;
     }
   </style>
@@ -143,7 +166,7 @@
 <body>
   <header>
     <h1>🎄 2026 瓷婚之旅｜奧捷匈斯 18 天</h1>
-    <div class="sub">12/02 – 12/19 聖誕市集・跨國火車・即時氣象・全攻略手冊</div>
+    <div class="sub">12/02 – 12/19 逐時交通・景點・餐廳・即時氣象・13份全攻略</div>
   </header>
 
   <div id="view-itinerary" class="view active">
@@ -171,360 +194,40 @@
       </div>
 
       <div class="card">
-        <div class="section-title">✅ 行前與交通必備清單</div>
+        <div class="section-title">✅ 行前與交通必備清單（自動儲存勾選狀態）</div>
         <div id="checklist"></div>
       </div>
 
       <div class="card">
-        <div class="section-title">🚀 一鍵下載並更新 GitHub Pages</div>
-        <p style="font-size:13px;color:#4b5563">點擊下方按鈕可直接從手機或電腦匯出最新版 <code>index.html</code> 檔案，再上傳覆蓋到您的 GitHub Repository 即可！</p>
+        <div class="section-title">🚀 一鍵匯出並更新 GitHub Pages</div>
+        <p style="font-size:13px;color:#4b5563">點擊下方按鈕可直接下載最新版 <code>index.html</code> 檔案，上傳覆蓋到您的 GitHub Repository 即可同步更新手機版 APP！</p>
         <button class="btn-download" onclick="downloadSelf()">⬇️ 下載最新版 index.html 檔案</button>
       </div>
     </div>
   </div>
 
   <nav class="tab-bar">
-    <button class="tab-item active" onclick="switchTab('itinerary', this)"><span class="ico">📅</span>每日行程</button>
+    <button class="tab-item active" onclick="switchTab('itinerary', this)"><span class="ico">📅</span>逐時行程</button>
     <button class="tab-item" onclick="switchTab('guides', this)"><span class="ico">📚</span>13份攻略</button>
     <button class="tab-item" onclick="switchTab('tools', this)"><span class="ico">🧰</span>工具/下載</button>
   </nav>
 
   <script>
-    const ITINERARY = [
-      {
-        day: 1, date: "12/02 (三)", country: "台灣 ➔ 奧地利", city: "機上", lat: 25.08, lon: 121.23,
-        winter: "18°C~22°C / 30%短暫雨", depart: "20:00 抵達桃園機場報到（23:35 CI0063 起飛）",
-        transport: "23:35 搭乘中華航空 CI0063 台北 (TPE) 直飛維也納 (VIE)",
-        notice: "隨身攜帶頸枕、保濕用品、原子筆，確認歐洲網卡/eSIM 已安裝完成。",
-        spots: ["桃園機場免稅店"], foods: ["機上餐點"],
-        hotel: "機上過夜（中華航空 CI0063）", hotelQuery: "Taiwan Taoyuan International Airport",
-        refs: ["維也納交通票", "ÖBB App 訂購車票後"]
-      },
-      {
-        day: 2, date: "12/03 (四)", country: "奧地利", city: "維也納", lat: 48.21, lon: 16.37,
-        winter: "0°C~5°C / 35%乾冷", depart: "06:50 抵達機場 ➔ 約 08:30 飯店寄放行李後出發",
-        transport: "於 ÖBB App 購買「維也納 7 日通票 (€25.20，12/03–12/09 通用)」＋ 1 張外圍單程補票「機場到市區邊界 (Schwechat) 單程延伸票 (約 €2.20 左右)」。搭 RJX 或 S7 電車至 Wien Hauptbahnhof 寄放行李；市內搭地鐵 U1 線。",
-        notice: "【已更新】維也納 7 日通票 (€25.20) 從今天 12/03 啟用後一路連續通用到 12/09 24:00！今天只需加購 1 張機場到市區邊界 Schwechat 的單程延伸票 (約 €2.20)。Figlmüller 炸豬排務必提前預約。",
-        spots: ["聖史蒂芬大教堂", "葛拉本大街", "維也納市政廳聖誕市集"],
-        foods: ["Figlmüller（比臉大炸豬排）", "Café Central（薩赫蛋糕）"],
-        hotel: "ibis Wien Hauptbahnhof", hotelQuery: "ibis Wien Hauptbahnhof",
-        refs: ["維也納交通票", "ÖBB App 訂購車票後", "住宿選區"]
-      },
-      {
-        day: 3, date: "12/04 (五)", country: "奧地利", city: "維也納", lat: 48.21, lon: 16.37,
-        winter: "-1°C~4°C / 30%多雲", depart: "08:30 從飯店出發",
-        transport: "全天使用維也納 7 日通票 (€25.20) 搭乘地鐵 U4 線與 D 線路面電車（Tram D）",
-        notice: "美泉宮與美景宮（克林姆《吻》）建議提前官網預約時段，冬季戶外風冷隨時搭 Tram 暖身。",
-        spots: ["美泉宮", "霍夫堡皇宮", "美景宮（克林姆《吻》與美景宮聖誕市集）"],
-        foods: ["Plachutta（清燉牛肉 Tafelspitz）", "Café Sacher（皇家黑咖啡）"],
-        hotel: "ibis Wien Hauptbahnhof", hotelQuery: "ibis Wien Hauptbahnhof",
-        refs: ["維也納交通票"]
-      },
-      {
-        day: 4, date: "12/05 (六)", country: "匈牙利", city: "布達佩斯", lat: 47.50, lon: 19.04,
-        winter: "0°C~5°C / 30%河風大", depart: "06:55 從飯店出發（步行至 Wien Hbf 月台）",
-        transport: "(MAV/ÖBB) 07:40–10:35 搭乘 ÖBB Railjet RJX267；市內搭乘地鐵 M1 線 / Tram 2",
-        notice: "清晨在維也納市區仍用 7 日通票。抵達布達佩斯後於 BudapestGO App 啟用「72 小時交通通票 (Ft 5,500)」。多瑙河遊船建議預約 17:00–19:00 黃金夕陽夜景班次！",
-        spots: ["瓦采街", "聖伊什特萬聖殿聖誕市集", "多瑙河夕陽/夜景遊船"],
-        foods: ["Menza（匈牙利牛肉湯 Goulash）", "Kürtőskalács（現烤煙囪卷）"],
-        hotel: "Moxy Budapest Downtown", hotelQuery: "Moxy Budapest Downtown",
-        refs: ["布達佩斯交通票", "布達佩斯多瑙河遊船", "ÖBB App 訂購車票後"]
-      },
-      {
-        day: 5, date: "12/06 (日)", country: "匈牙利", city: "布達佩斯", lat: 47.50, lon: 19.04,
-        winter: "-1°C~4°C / 25%晴冷", depart: "08:45 從飯店出發",
-        transport: "搭乘市區 16 號小巴士（含在 72h 通票內）或自費搭乘城堡纜車 (Budavári Sikló)",
-        notice: "搭 16 號小巴士上城堡山最順路省錢，傍晚步行走過塞切尼鎖鏈橋欣賞國會大廈夜景。",
-        spots: ["漁人堡", "馬加什教堂", "布達城堡", "塞切尼鏈橋"],
-        foods: ["Ruszwurm（百年奶油蛋糕）", "Gundel Café（核桃巧克力薄餅）"],
-        hotel: "Moxy Budapest Downtown", hotelQuery: "Moxy Budapest Downtown",
-        refs: ["布達佩斯交通票"]
-      },
-      {
-        day: 6, date: "12/07 (一)", country: "匈牙利", city: "布達佩斯", lat: 47.50, lon: 19.04,
-        winter: "0°C~4°C / 30%陰冷", depart: "08:30 從飯店出發（攜帶泳衣、拖鞋、浴巾）",
-        transport: "搭乘百年地鐵 M1 線（黃線）直達 Széchenyi fürdő 站",
-        notice: "泡戶外溫泉務必自備拖鞋與大浴巾，早上 09:00 前入場人少好拍照！下午中央市場買鵝肝醬與貴腐酒。",
-        spots: ["塞切尼溫泉", "英雄廣場", "中央市場", "廢墟酒吧 (Szimpla Kert)"],
-        foods: ["Lángos（現炸酸奶起司蒜香油餅）", "Pálinka（水果白蘭地）"],
-        hotel: "Moxy Budapest Downtown", hotelQuery: "Moxy Budapest Downtown",
-        refs: ["布達佩斯交通票"]
-      },
-      {
-        day: 7, date: "12/08 (二)", country: "匈牙利", city: "布達佩斯", lat: 47.67, lon: 19.08,
-        winter: "-1°C~4°C / 25%乾冷", depart: "08:15 從飯店出發前往 Batthyány tér 站",
-        transport: "09:00 從 Batthyány tér 搭 HÉV H5 至 Szentendre (40m)；13:30 返回市區；市內搭 Tram 2",
-        notice: "搭乘 HÉV H5 前往聖安德烈（蔡依林《馬德里不思議》MV 取景地）需加購市區外延伸補票 (約 400–500 HUF)。New York Café 務必提前預約！",
-        spots: ["聖安德烈舊城廣場", "彩色雨傘巷", "多瑙河岸鞋子雕像", "蓋勒特山丘"],
-        foods: ["Szentendre 鵝卵石小巷現炸 Lángos", "New York Café（世界最美咖啡館）", "Rosenstein（鵝肝料理）"],
-        hotel: "Moxy Budapest Downtown", hotelQuery: "Moxy Budapest Downtown",
-        refs: ["布達佩斯交通票"]
-      },
-      {
-        day: 8, date: "12/09 (三)", country: "奧地利", city: "維也納", lat: 48.21, lon: 16.37,
-        winter: "0°C~4°C / 35%陰冷", depart: "08:20 從飯店出發前往 Budapest-Keleti 車站",
-        transport: "(OBB) 09:30–12:20 搭乘 ÖBB Railjet RJX 62；市內繼續使用「維也納 7 日通票 (€25.20)」搭乘地鐵 U1/U4 線",
-        notice: "【省錢關鍵】12/03 啟用的「維也納 7 日通票 (€25.20)」今天第 7 天仍全天有效至 24:00，返回維也納直接刷原通票搭地鐵即可！Ribs of Vienna 務必預約。",
-        spots: ["瑪麗亞·特蕾西亞廣場", "維也納市政廳廣場聖誕市集", "百水公寓"],
-        foods: ["Ribs of Vienna（一公尺地窖烤豬排）", "Demel（帝國煎餅）"],
-        hotel: "ibis Wien Hauptbahnhof", hotelQuery: "ibis Wien Hauptbahnhof",
-        refs: ["維也納交通票", "ÖBB App 訂購車票後"]
-      },
-      {
-        day: 9, date: "12/10 (四)", country: "斯洛伐克", city: "布拉提斯拉瓦", lat: 48.15, lon: 17.11,
-        winter: "-1°C~4°C / 30%多雲", depart: "08:30 從飯店出發（步行至 Wien Hbf）",
-        transport: "(OBB) Bratislava-Ticket (€19，前一天在 ÖBB App 買即可)，搭 REX 區域快車（自由座免劃位）；當地搭 Tram 1 進老城",
-        notice: "Bratislava-Ticket (€19) 已內含當天維也納市區往返、跨國火車及布拉提斯拉瓦市區 Tram 1 無限次搭乘！出總站穿過新大廳下樓搭 Tram 1 至 Námestie SNP 站。",
-        spots: ["總統府", "聖米歇爾門", "守望者雕像 Čumil", "布拉提斯拉瓦城堡", "藍色教堂"],
-        foods: ["Flagship Restaurant（羊乳酪起司麵餃）", "KORZO（烤鴨與蒜頭湯）"],
-        hotel: "ibis Wien Hauptbahnhof", hotelQuery: "ibis Wien Hauptbahnhof",
-        refs: ["Bratislava-Ticket", "ÖBB App 訂購車票後"]
-      },
-      {
-        day: 10, date: "12/11 (五)", country: "奧地利", city: "薩爾斯堡", lat: 47.81, lon: 13.06,
-        winter: "-2°C~3°C / 40%易降雪", depart: "06:45 退房出發（步行至 Wien Hbf 月台）",
-        transport: "(OBB) 07:28–09:53 搭乘 ÖBB Railjet RJX 160（Wien Hbf ➔ Salzburg Hbf）；市區持薩爾斯堡卡 48h 免費搭公車",
-        notice: "抵達 Salzburg Hbf 後，先到車站大廳主要入口左側走廊的「薩爾斯堡旅遊服務中心 (Tourist Information)」憑 App 憑證換取實體感應晶片卡（首次進景點或搭公車才開始計時 48 小時）。",
-        spots: ["米拉貝爾宮", "糧食胡同（莫札特出生地）", "薩爾斯堡要塞（含纜車）", "莫札特廣場聖誕市集"],
-        foods: ["Bärenwirt（現炸春雞）", "Fürst（銀藍包裝正宗莫札特巧克力）"],
-        hotel: "Hotel Restaurant Auerhahn", hotelQuery: "Hotel Restaurant Auerhahn Salzburg",
-        refs: ["薩爾斯堡卡", "ÖBB App 訂購車票後", "住宿選區"]
-      },
-      {
-        day: 11, date: "12/12 (六)", country: "奧地利", city: "薩爾斯堡", lat: 47.81, lon: 13.06,
-        winter: "-3°C~2°C / 45%山區易雪", depart: "08:30 從飯店出發前往搭乘 Bus 25",
-        transport: "09:00 前搭 Bus 25 前往溫特斯山纜車；下午走訪海爾布倫宮與莫札特故居（薩爾斯堡卡 48h 全涵蓋）",
-        notice: "溫特斯山高空纜車（原價 €32）、Bus 25、海爾布倫宮與莫札特故居全部刷薩爾斯堡卡免費入場！山頂極冷請戴毛帽手套。",
-        spots: ["溫特斯山纜車 (Untersberg)", "海爾布倫宮 (亮泉宮)", "莫札特故居", "Salzach 河畔夜景"],
-        foods: ["Pfuner（傳統奧地利燉牛肉）", "Salzburger Nockerl（薩爾斯堡蛋舒芙蕾）"],
-        hotel: "Hotel Restaurant Auerhahn", hotelQuery: "Hotel Restaurant Auerhahn Salzburg",
-        refs: ["薩爾斯堡卡"]
-      },
-      {
-        day: 12, date: "12/13 (日)", country: "奧地利", city: "哈修塔特", lat: 47.56, lon: 13.65,
-        winter: "-3°C~2°C / 45%濕冷雪", depart: "07:45 從飯店出發前往 Salzburg Hbf 站前公車總站",
-        transport: "08:15 搭 Bus 150 至 Bad Ischl ➔ 轉列車 REX 3412 至 Hallstatt 站 ➔ 轉 Stefanie 渡輪；16:07 原路返程",
-        notice: "Bus 150 超出薩爾斯堡卡範圍！請在 ÖBB App 或向司機購買「Salzburg Hbf ➔ Hallstatt Bahnhof」聯程票。Stefanie 渡輪船上僅收現金（單程約 €3.5–€4.0）。",
-        spots: ["哈修塔特明信片最佳拍攝點", "Marktplatz 舊城廣場", "木造船碼頭", "湖畔慢遊"],
-        foods: ["Gasthof Zauner（現煎烤鱒魚）", "Schaumrolle（奶油蛋白捲）"],
-        hotel: "Hotel Restaurant Auerhahn", hotelQuery: "Hotel Restaurant Auerhahn Salzburg",
-        refs: ["薩爾斯堡到哈修塔特", "薩爾斯堡卡"]
-      },
-      {
-        day: 13, date: "12/14 (一)", country: "捷克", city: "布拉格", lat: 50.08, lon: 14.44,
-        winter: "-2°C~3°C / 35%陰冷", depart: "09:20 退房出發前往 Salzburg Hbf",
-        transport: "(OBB) 10:11–11:30 搭乘 ÖBB IC 641（Salzburg Hbf ➔ Linz Hbf）；11:54–15:39 搭乘 ÖBB EC 334（Linz Hbf ➔ Praha hl.n.）",
-        notice: "抵達布拉格後建議下載 PID Lítačka App 購買「72 小時通票 (330 CZK)」，搭車前需點擊 Activate 倒數 2 分鐘生效。",
-        spots: ["庫倫洛夫 (CK) 舊城區 / 彩繪塔 / 理髮師橋", "布拉格舊城區夜景"],
-        foods: ["Krčma v Šatlavské（CK 地窖烤豬腳）", "Mincovna（布拉格燉牛肉）"],
-        hotel: "ibis Praha Wenceslas Square", hotelQuery: "ibis Praha Wenceslas Square",
-        refs: ["布拉格交通票", "跨國車票與專車的預訂時間", "住宿選區"]
-      },
-      {
-        day: 14, date: "12/15 (二)", country: "捷克", city: "布拉格", lat: 50.08, lon: 14.44,
-        winter: "-2°C~3°C / 30%乾冷", depart: "07:30 從飯店出發（趁清晨拍查理大橋空景）",
-        transport: "全天步行與搭乘 22 號路面電車 (Tram 22) 及佩特任山纜車",
-        notice: "布拉格 72 小時通票 (330 CZK) 已免費包含「佩特任山纜車」！城堡區安檢排隊較長建議早點抵達。",
-        spots: ["查理大橋晨景", "布拉格城堡區", "聖維特大教堂", "黃金巷", "佩特任山夜景"],
-        foods: ["Lokál Dlouhááá（捷克炸起司）", "Café Louvre（羅浮咖啡館早午餐）"],
-        hotel: "ibis Praha Wenceslas Square", hotelQuery: "ibis Praha Wenceslas Square",
-        refs: ["布拉格交通票"]
-      },
-      {
-        day: 15, date: "12/16 (三)", country: "捷克", city: "布拉格", lat: 50.08, lon: 14.44,
-        winter: "-2°C~3°C / 35%河風冷", depart: "09:00 從飯店出發",
-        transport: "搭乘地鐵 C 線（紅線）與 17 號路面電車 (Tram 17)",
-        notice: "伏爾塔瓦河遊船冬日黃金夕陽約 16:00–17:30，請認明碼頭（Judita Pier 或 Čech Bridge Pier），河風冷建議選暖氣玻璃船或提供熱紅酒的小木船。",
-        spots: ["高堡區（俯瞰全景）", "跳舞的房子", "伏爾塔瓦河遊船", "哈維爾市集"],
-        foods: ["Naše Maso（頂級肉鋪和牛堡）", "Sisters Bistro（捷克開放式三明治）"],
-        hotel: "ibis Praha Wenceslas Square", hotelQuery: "ibis Praha Wenceslas Square",
-        refs: ["布拉格伏爾塔瓦河遊船", "布拉格交通票"]
-      },
-      {
-        day: 16, date: "12/17 (四)", country: "捷克", city: "布拉格", lat: 50.08, lon: 14.44,
-        winter: "-2°C~2°C / 30%陰冷", depart: "09:30 從飯店出發",
-        transport: "市區步行與搭乘 Tram 2 / Tram 18 電車（若 72h 通票到期可加購 24h 通票 120 CZK）",
-        notice: "菠丹妮 Botanicus / Manufaktura 單筆滿 2,000 CZK 記得索取退稅單並核對護照號碼！Imperial Café 務必提前預約。",
-        spots: ["市民會館", "火藥塔", "瓦茨拉夫廣場", "菠丹妮/Manufaktura 保養品採買"],
-        foods: ["Imperial Café（帝國咖啡館油封鴨腿）", "Kantýna（立吞烤牛排）"],
-        hotel: "ibis Praha Wenceslas Square", hotelQuery: "ibis Praha Wenceslas Square",
-        refs: ["布拉格交通票", "布拉格到機場交通"]
-      },
-      {
-        day: 17, date: "12/18 (五)", country: "捷克 ➔ 台灣", city: "機上", lat: 50.10, lon: 14.26,
-        winter: "-3°C~2°C / 30%寒冷", depart: "06:45 準時退房，搭乘預約好的 Bolt / Uber 直達機場",
-        transport: "06:45 預約 Bolt/Uber 車輛直達機場（約 25–30 分鐘）；07:15 辦理退稅；CI0068 10:30 起飛",
-        notice: "【退稅順序】07:15 抵達布拉格機場先去退稅海關蓋章（托運行李退稅品先別託運！）➔ 航空公司報到託運 ➔ 08:30 過安檢逛免稅店 ➔ 10:30 起飛。",
-        spots: ["布拉格瓦茨拉夫·哈維爾機場退稅櫃檯與免稅店"],
-        foods: ["機上餐點"],
-        hotel: "機上過夜（中華航空 CI0068）", hotelQuery: "Vaclav Havel Airport Prague",
-        refs: ["布拉格到機場交通"]
-      },
-      {
-        day: 18, date: "12/19 (六)", country: "台灣", city: "台北", lat: 25.08, lon: 121.23,
-        winter: "17°C~21°C / 25%舒適", depart: "05:25 平安返抵桃園國際機場 (TPE)",
-        transport: "05:25 返抵桃園國際機場 (TPE)",
-        notice: "2026 瓷婚之旅圓滿成功！領取行李時請清點戰利品與護照。",
-        spots: ["溫暖的家"], foods: ["台灣道地早餐"],
-        hotel: "溫暖的家", hotelQuery: "Taiwan Taoyuan International Airport",
-        refs: []
-      }
-    ];
-
-    const GUIDES = [
-      {
-        id: "維也納交通票", title: "🇦🇹 維也納交通票（已更新：7日通票 €25.2 + Schwechat 單程延伸票 €2.20）",
-        html: `
-          <p><strong>1. 為什麼建議購買「維也納 7 日通票 (€25.20)」？（12/03 – 12/09 連續 7 日通用）</strong></p>
-          <p>• <strong>日曆天連續 7 日制：</strong>維也納 7 日通票（7-Day Ticket Wien，售價 €25.20）從指定啟用日 00:00 起算連續 7 個日曆天，至第 7 天 24:00 結束。</p>
-          <p>• <strong>完整涵蓋兩段維也納停留：</strong>12/03（週四）啟用後一路有效至 12/09（週三）24:00！不僅涵蓋 12/03–12/05 的維也納行程，連 12/09 從布達佩斯返回維也納的全天市區交通也一併包辦。</p>
-          <p>• <strong>12/10 斯洛伐克一日遊無縫接軌：</strong>7 日票於 12/09 午夜到期後，12/10 購買的 Bratislava-Ticket（€19）本身已內含當天維也納市區往返車站的交通，完全不需再額外買市區票！</p>
-          <p><strong>2. 第一天（12/03）機場到市區購票細節（Schwechat 延伸補票）</strong></p>
-          <p>• 維也納 7 日通票僅限維也納市區核心區（Zone 100），機場位於外圍區域。</p>
-          <p>• <strong>最佳購票組合：</strong>在 <strong>ÖBB App</strong> 或機場售票機購買<strong>「維也納 7 日通票 (€25.20)」＋ 1 張外圍單程補票「機場到市區邊界（Schwechat）的單程延伸票（約 €2.20 左右）」</strong>。</p>
-          <p>• 搭乘 S-Bahn S7 或 ÖBB 區域火車（RJ / RJX）約 15–25 分鐘直達維也納中央車站（Wien Hbf），不需買昂貴的 CAT 快線（€14.90）。</p>
-        `
-      },
-      {
-        id: "ÖBB App 訂購車票後", title: "📱 ÖBB App 訂購車票後領票與車站列印 4 步驟",
-        html: `
-          <p><strong>⚠️ 重要提醒：</strong>Email 確認信不能當車票！必須在 ÖBB App 內執行 <strong>「Get tickets」</strong> 產生 QR Code。</p>
-          <p>1. 打開 ÖBB App，點擊左上角選單（☰）➔ 進入 <strong>My Trips / Tickets</strong>。</p>
-          <p>2. 點進訂單點擊 <strong>「Get tickets」</strong> 產生 QR Code，並建議匯入 Apple/Google Wallet 或截圖（邊境訊號弱）。</p>
-          <p>3. <strong>重大注意：</strong>一旦點擊 Get tickets 生效後將<strong>無法退票或改期</strong>，建議出發當天確認行程不變再按。</p>
-          <p>4. 若有 12 位數 <strong>Pickup Code</strong>，可在車站紅色售票機選 English ➔ Pick up ticket 列印紙本（印出後 App 電子版即失效）。</p>
-        `
-      },
-      {
-        id: "跨國車票與專車的預訂時間", title: "📅 跨國車票與專車預訂時間表",
-        html: `
-          <table class="ref-table">
-            <tr><th>路線 / 工具</th><th>建議預訂時間</th><th>說明</th></tr>
-            <tr><td>ÖBB 跨國火車</td><td>2~3 個月前</td><td>12 月旺季早買享 Sparschiene 早鳥價，長途務必加購劃位。</td></tr>
-            <tr><td>CK Shuttle 專車</td><td>1.5~2 個月前</td><td>薩爾斯堡 ➔ CK 小鎮門對門九人座，班次少額滿快。</td></tr>
-            <tr><td>RegioJet / FlixBus</td><td>1 個月前</td><td>CK 小鎮 ➔ 布拉格巴士班次密集。</td></tr>
-            <tr><td>Bratislava-Ticket</td><td>前 1 天或當天</td><td>固定票價 €19 不限班次，自由座無須提早搶。</td></tr>
-            <tr><td>薩爾斯堡 ➔ 哈修塔特</td><td>當天現場/App</td><td>Bus 150 上車向司機買聯程票或用 ÖBB App 購買。</td></tr>
-          </table>
-        `
-      },
-      {
-        id: "入境交通", title: "✈️ 維也納機場入境轉乘比較（進市區 vs 直達布達佩斯）",
-        html: `
-          <p>• <strong>進維也納市區（本行程採用）：</strong>06:50 抵達後持「維也納 7 日通票 €25.20 + 機場至 Schwechat 延伸票 €2.20」搭 RJX / S7 約 15–25 分鐘直達 Wien Hbf。</p>
-          <p>• <strong>備註（若直接往布達佩斯）：</strong>維也納機場無直達布達佩斯火車，需在機場客運航廈搭 FlixBus / RegioJet（約 2.5–3 小時直達 Budapest Népliget M3 站或 Kelenföld M4 站）。</p>
-        `
-      },
-      {
-        id: "布達佩斯交通票", title: "🇭🇺 布達佩斯交通票 & 聖安德烈（蔡依林 MV）H5 補票攻略",
-        html: `
-          <table class="ref-table">
-            <tr><th>通票類型</th><th>票價 (HUF)</th><th>特色</th></tr>
-            <tr><td>72 小時通票</td><td>Ft 5,500 (約$480)</td><td><strong>最推薦！</strong>激活起 72 小時無限搭地鐵 M1-M4、Tram、16號公車。</td></tr>
-            <tr><td>24 小時通票</td><td>Ft 2,500 (約$220)</td><td>單日密集搭車適用。</td></tr>
-          </table>
-          <p>• 推薦下載 <strong>BudapestGO App</strong> 購買電子 Pass。</p>
-          <p>• <strong>聖安德烈（Szentendre）交通：</strong>蔡依林《馬德里不思議》實際取景地！搭地鐵 M2 至 Batthyány tér 站轉 <strong>HÉV H5 郊區火車</strong>（車程 40 分鐘），持市區通票需額外買「市區外延伸段補票（約 400–500 HUF）」。</p>
-        `
-      },
-      {
-        id: "布達佩斯多瑙河遊船", title: "🚢 布達佩斯多瑙河遊船比較與黃金夕陽時段",
-        html: `
-          <p>• <strong>最佳時段：</strong>17:00 – 19:00 夕陽至入夜點燈時分（國會大廈點燈極震撼），建議提前 2–4 週於 KKday/Klook 或 Legenda / Silverline 官網預訂。</p>
-          <table class="ref-table">
-            <tr><th>遊船類型</th><th>價格</th><th>內容</th></tr>
-            <tr><td>標準觀光遊船</td><td>€12 – €22</td><td>1 小時航程 + 迎賓飲料 + 中文語音導覽（CP 值最高）。</td></tr>
-            <tr><td>高級夜間觀光船</td><td>€22 – €30</td><td>全景玻璃窗 + 迎賓酒 + 琴聲表演。</td></tr>
-            <tr><td>自助/套餐晚餐船</td><td>€55 – €90+</td><td>1.5–2 小時航程 + 3–4 道式晚餐 + 現場音樂。</td></tr>
-          </table>
-          <p>• 提前 20–30 分鐘抵達指定 Dock 碼頭搶露天甲板位，12 月河風極冷務必戴毛帽圍巾。</p>
-        `
-      },
-      {
-        id: "Bratislava-Ticket", title: "🇸🇰 Bratislava-Ticket (€19) 與總站找 Tram 1 月台指南",
-        html: `
-          <p>• <strong>票券優勢：</strong>在 ÖBB App 購買 <strong>Bratislava-Ticket（€19）</strong>，包含維也納往返布拉提斯拉瓦 REX 區域火車（每小時約 2 班、自由座免劃位、車程 1 小時），以及<strong>當天布拉提斯拉瓦市區公車/電車免費無限搭</strong>（無須打卡，查票直接出示火車票）。</p>
-          <p>• <strong>總站找 Tram 1 月台：</strong>下火車穿過舊大廳往「玻璃採光新大廳」走 ➔ 依 Tram 指標左轉走廊到底搭手扶梯下樓 ➔ 搭乘 <strong>1 號電車 (Tram 1)</strong> 約 10 分鐘，於第 4 站 <strong>Námestie SNP</strong> 下車步行 3 分鐘即達老城區（上下車請按車門按鈕）。</p>
-          <p>• <strong>必吃三寶：</strong>羊起司麵疙瘩 (Bryndzové Halušky)、麵包碗蒜頭濃湯、草本可樂 Kofola。</p>
-        `
-      },
-      {
-        id: "薩爾斯堡卡", title: "🎫 薩爾斯堡卡 24h vs 48h 試算省 €62 & 車站換卡位置",
-        html: `
-          <table class="ref-table">
-            <tr><th>比較項目</th><th>方案 A：24h 卡 (€31)</th><th>方案 B：48h 卡 (€40 最推薦)</th></tr>
-            <tr><td>總花費（含門票交通）</td><td>€62.50（省 €39.50）</td><td><strong>€40.00（狂省 €62.00！）</strong></td></tr>
-            <tr><td>涵蓋景點</td><td>僅含要塞、莫札特出生地、溫特斯山</td><td><strong>全包！</strong>加含海爾布倫宮(€15)、莫札特故居(€13.5)與所有公車</td></tr>
-          </table>
-          <p>• <strong>實體卡兌換地點：</strong>抵達薩爾斯堡中央車站（Salzburg Hbf）後，前往<strong>大廳主要入口左側走廊的「薩爾斯堡旅遊服務中心 (Tourist Information)」</strong>，出示憑證換取實體感應晶片卡（首次進景點或搭公車刷卡才開始計時 48 小時）。</p>
-        `
-      },
-      {
-        id: "薩爾斯堡到哈修塔特", title: "🏔️ 薩爾斯堡到哈修塔特四段時間拆解與渡輪規定",
-        html: `
-          <p>1. <strong>08:15 – 09:37 Bus 150：</strong>Salzburg Hbf 站前公車總站 ➔ Bad Ischl（約 1 小時 22 分）。</p>
-          <p>2. <strong>轉乘等候：</strong>Bad Ischl 下車步行 1 分鐘即達火車月台（約等 20–25 分鐘）。</p>
-          <p>3. <strong>10:02 – 10:24 REX 3412 火車：</strong>Bad Ischl ➔ Hallstatt Bahnhof（約 22 分鐘）。</p>
-          <p>4. <strong>Stefanie 渡輪：</strong>下火車順人流走下階梯至碼頭搭船（約 8–10 分鐘，約 10:35 抵達舊城區）。</p>
-          <p>• <strong>購票提醒：</strong>Bus 150 超出薩爾斯堡卡範圍，可直接在 ÖBB App 或向司機買「Salzburg Hbf ➔ Hallstatt Bahnhof」聯程票；<strong>Stefanie 渡輪需在船上付現金</strong>（單程約 €3.5–€4.0）。</p>
-        `
-      },
-      {
-        id: "布拉格交通票", title: "🇨🇿 布拉格交通票搭配 & PID Lítačka App 激活規定",
-        html: `
-          <table class="ref-table">
-            <tr><th>通票類型</th><th>票價 (CZK)</th><th>特色</th></tr>
-            <tr><td>72 小時通票</td><td>330 CZK (約$440)</td><td><strong>最推薦！</strong>無限搭地鐵 A/B/C、Tram、公車及<strong>佩特任山纜車</strong>。</td></tr>
-            <tr><td>24 小時通票</td><td>120 CZK (約$160)</td><td>適合第 4 天 12/17 加購使用。</td></tr>
-          </table>
-          <p>• <strong>重要激活規定：</strong>下載官方 <strong>PID Lítačka App</strong> 購票後，務必在搭車前點擊 <strong>「Activate」</strong>，系統會有 <strong>2 分鐘倒數</strong>，倒數完畢才算有效票（紙本票則須在黃色打卡機打時間章）。</p>
-        `
-      },
-      {
-        id: "布拉格伏爾塔瓦河遊船", title: "⛵ 布拉格伏爾塔瓦河遊船比較與兩大碼頭位置",
-        html: `
-          <table class="ref-table">
-            <tr><th>船種</th><th>價格</th><th>特色</th></tr>
-            <tr><td>經典 50 分鐘觀光船</td><td>€14 – €18</td><td>經過查理大橋下，含中文音訊導覽。</td></tr>
-            <tr><td>魔鬼河微型木船</td><td>€20 – €24</td><td><strong>超推薦！</strong>深入狹窄古老水車水道，含免費飲料/熱紅酒與毛毯。</td></tr>
-            <tr><td>全景玻璃景觀船</td><td>€22 – €30</td><td>現代化暖氣玻璃船艙，冬季防風保暖首選。</td></tr>
-          </table>
-          <p>• <strong>認清兩大碼頭：</strong>Prague Venice 魔鬼河小木船在 <strong>查理大橋橋頭碼頭 (Judita Pier)</strong>；Prague Boats 大型玻璃船在 <strong>切赫橋碼頭 (Čech Bridge Pier)</strong>。</p>
-        `
-      },
-      {
-        id: "布拉格到機場交通", title: "🛫 12/18 布拉格到機場交通與退稅時間軸",
-        html: `
-          <p>• <strong>最推薦（叫車 Bolt / Uber）：</strong>06:45 飯店門口上車，清晨不塞車約 25–30 分鐘直達航廈（車資約 400–600 CZK），免在寒風中拖行李走石板路。</p>
-          <p>• <strong>CP 值備案（地鐵 A 線 + 59 號無軌電車）：</strong>06:30 出發，搭地鐵 A 線至 Nádraží Veleslavín 站轉 59 號電車（約 40–45 分鐘，含在交通 Pass 內；不建議搭單程 100 CZK 的 AE 巴士）。</p>
-          <p>• <strong>12/18 機場時間軸：</strong>06:45 出發 ➔ 07:15 抵達先辦退稅海關蓋章（托運退稅品先別託運！）➔ 航空公司 Check-in 託運 ➔ 08:30 過安檢免稅店 ➔ 10:30 起飛。</p>
-        `
-      },
-      {
-        id: "住宿選區", title: "🏨 四大城市住宿選區黃金地段總結速查表",
-        html: `
-          <table class="ref-table">
-            <tr><th>城市</th><th>首選住宿區</th><th>核心交通優勢</th></tr>
-            <tr><td>維也納</td><td>中央車站區 (Wien Hbf)</td><td>跨國火車/斯洛伐克一日遊零距離，U1 地鐵 5 分鐘進市中心，車站超市週日也營業。</td></tr>
-            <tr><td>布達佩斯</td><td>佩斯第 V 區 (Belváros)</td><td>Deák Ferenc tér 三線地鐵交會，步行即達聖誕市集與遊船碼頭。</td></tr>
-            <tr><td>薩爾斯堡</td><td>中央車站區 (Salzburg Hbf)</td><td>Bus 150（哈修塔特）與 Bus 25（溫特斯山）起點，免拖行李走石板路。</td></tr>
-            <tr><td>布拉格</td><td>舊城區邊緣 / 瓦茨拉夫廣場</td><td>景點全步行可達，生活採買方便，專車直接送達。</td></tr>
-          </table>
-        `
-      }
-    ];
+    const TRIP_DATA = {"itinerary": [{"date": "2026-12-02", "weekday": "三", "country": "台灣 ➔ 奧地利", "city": "機上", "hotel": "機上", "flightCost": 61858.0, "hotelCost": "", "transportCost": "", "dayNum": 1, "departHotel": "20:00 抵達桃園國際機場第一/第二航廈報到", "cityEn": "Taipei ➔ In Flight", "lat": 25.0797, "lon": 121.2342, "winterTemp": "18°C ~ 22°C", "winterRain": "30% 局部短暫雨", "hotelName": "機上過夜（中華航空 CI0063）", "hotelMap": "https://www.google.com/maps/search/?api=1&query=Taiwan+Taoyuan+International+Airport", "notice": "23:35 CI0063 起飛。隨身攜帶頸枕、保濕用品、原子筆（填寫入境卡備用），並確認歐洲網卡/eSIM 已安裝完成。", "transport": "23:35 搭乘中華航空 CI0063 從台北桃園機場 (TPE) 直飛維也納 (VIE)。", "spots": ["桃園機場免稅店"], "foods": ["機上餐點"], "relatedSheets": ["參考_入境交通", "參考_跨國車票與專車的預訂時間"], "timeline": [{"time": "20:00", "type": "交通", "title": "抵達桃園國際機場 (TPE) 報到", "desc": "辦理中華航空 CI0063 登機與行李託運，確認歐洲網卡/eSIM 已設定。"}, {"time": "21:30", "type": "景點", "title": "桃園機場免稅店巡禮", "desc": "逛免稅店、登機口候機休息。"}, {"time": "23:35", "type": "交通", "title": "搭乘 CI0063 直飛維也納 (VIE)", "desc": "享用機上晚餐與早餐，機上過夜休息。"}]}, {"date": "2026-12-03", "weekday": "四", "country": "奧地利", "city": "維也納", "hotel": "維也納 (Vienna) / ibis Wien Hauptbahnhof", "flightCost": "", "hotelCost": 11443.109999999999, "transportCost": "", "dayNum": 2, "departHotel": "06:50 抵達機場 ➔ 約 08:30 飯店寄放行李後出發", "cityEn": "Vienna, Austria", "lat": 48.2082, "lon": 16.3738, "winterTemp": "0°C ~ 5°C", "winterRain": "35% 乾冷微風", "hotelName": "ibis Wien Hauptbahnhof（維也納中央車站宜必思）", "hotelMap": "https://www.google.com/maps/search/?api=1&query=ibis+Wien+Hauptbahnhof", "notice": "【重要票券】請於 ÖBB App 購買「維也納 7 日通票 (€25.20，12/03–12/09 連續 7 日通用)」＋ 1 張外圍單程補票「機場到市區邊界（Schwechat）的單程延伸票（約 €2.20 左右）」。Figlmüller 炸豬排務必提前線上訂位！", "transport": "06:50 抵達維也納國際機場 (VIE) ➔ 持「維也納 7 日通票 (€25.20) + 機場至 Schwechat 單程延伸票 (約 €2.20)」搭乘 RJX 或 S7 電車至 Wien Hauptbahnhof 飯店寄放行李；市內搭乘地鐵 U1 線。", "spots": ["聖史蒂芬大教堂 (Stephansdom)", "葛拉本大街 (Graben)", "維也納市政廳聖誕市集 (Rathausplatz)"], "foods": ["Figlmüller（比臉大炸豬排）", "Café Central（中央咖啡館薩赫蛋糕）"], "relatedSheets": ["參考_維也納交通票", "參考_ÖBB App 訂購車票後", "參考_住宿選區"], "timeline": [{"time": "06:50", "type": "交通", "title": "抵達維也納國際機場 (VIE) ＆購票", "desc": "通關領行李後，於 ÖBB App 購買「維也納 7 日通票 (€25.20，12/03–12/09 通用)」＋ 1 張「機場到市區邊界 (Schwechat) 單程延伸票 (約 €2.20)」。"}, {"time": "08:00", "type": "交通", "title": "搭乘 RJX 或 S7 電車前往 Wien Hbf", "desc": "約 15–25 分鐘直達維也納中央車站，步行至 ibis Wien Hauptbahnhof 寄放行李。"}, {"time": "09:30", "type": "景點", "title": "聖史蒂芬大教堂 (Stephansdom)", "desc": "搭地鐵 U1 線至 Stephansplatz 站，參觀哥德式大教堂並登塔俯瞰維也納舊城。"}, {"time": "11:30", "type": "餐廳", "title": "Figlmüller（比臉大炸豬排）", "desc": "建議提前線上訂位，品嚐維也納最經典金黃酥脆炸豬排與馬鈴薯沙拉。"}, {"time": "13:30", "type": "景點", "title": "葛拉本大街 (Graben) ＆黑死病紀念柱", "desc": "漫步維也納最華麗的聖誕燈飾精品大街，欣賞巨型水晶吊燈街景。"}, {"time": "15:30", "type": "餐廳", "title": "Café Central（中央咖啡館）", "desc": "百年文人咖啡館，享用正宗薩赫蛋糕 (Sachertorte) 與維也納咖啡。"}, {"time": "17:30", "type": "景點", "title": "維也納市政廳廣場聖誕市集 (Rathausplatz)", "desc": "欣賞點燈後的市政廳與浪漫聖誕市集，品嚐熱紅酒 (Glühwein) 後搭 U1 回飯店。"}]}, {"date": "2026-12-04", "weekday": "五", "country": "奧地利", "city": "維也納", "hotel": "維也納 (Vienna) / ibis Wien Hauptbahnhof", "flightCost": "", "hotelCost": "", "transportCost": "", "dayNum": 3, "departHotel": "08:30 從飯店出發", "cityEn": "Vienna, Austria", "lat": 48.2082, "lon": 16.3738, "winterTemp": "-1°C ~ 4°C", "winterRain": "30% 多雲偏冷", "hotelName": "ibis Wien Hauptbahnhof（維也納中央車站宜必思）", "hotelMap": "https://www.google.com/maps/search/?api=1&query=ibis+Wien+Hauptbahnhof", "notice": "全程使用「維也納 7 日通票 (€25.20)」第 2 天免費搭乘 U4 與 Tram D。美泉宮與美景宮（克林姆《吻》）建議提前官網預約入場時段。", "transport": "全天使用維也納 7 日通票搭乘地鐵 U4 線與 D 線路面電車（Tram D）。", "spots": ["美泉宮 (Schloss Schönbrunn)", "霍夫堡皇宮 (Hofburg)", "美景宮 (Schloss Belvedere)《吻》與聖誕市集"], "foods": ["Plachutta（清燉牛肉 Tafelspitz）", "Café Sacher（薩赫蛋糕與皇家黑咖啡）"], "relatedSheets": ["參考_維也納交通票"], "timeline": [{"time": "08:30", "type": "交通", "title": "飯店出發（使用維也納 7 日通票第 2 天）", "desc": "搭地鐵 U4 線前往美泉宮，全天無限次搭乘 U4 與 D 線路面電車。"}, {"time": "09:00", "type": "景點", "title": "美泉宮 (Schloss Schönbrunn)", "desc": "建議提前預約皇宮導覽（Sisi Ticket），參觀茜茜公主起居室與皇家花園。"}, {"time": "12:15", "type": "餐廳", "title": "Plachutta（清燉牛肉 Tafelspitz）", "desc": "品嚐奧地利皇帝最愛的銅鍋清燉牛肉湯，搭配蘋果辣根醬與煎馬鈴薯絲。"}, {"time": "14:00", "type": "景點", "title": "霍夫堡皇宮 (Hofburg) ＆英雄廣場", "desc": "搭電車前往市中心，漫步哈布斯堡王朝冬宮建築群與周邊街區。"}, {"time": "15:45", "type": "餐廳", "title": "Café Sacher（薩赫咖啡館）", "desc": "在薩赫飯店內體驗皇室紅絲絨裝潢，品嚐原創薩赫蛋糕與皇家黑咖啡。"}, {"time": "17:15", "type": "景點", "title": "美景宮 (Schloss Belvedere)《吻》＆聖誕市集", "desc": "搭 Tram D 前往美景宮上宮欣賞克林姆真跡《吻》，傍晚逛水池倒影聖誕市集。"}]}, {"date": "2026-12-05", "weekday": "六", "country": "匈牙利", "city": "布達佩斯", "hotel": "布達佩斯 (Budapest) / Moxy Budapest Downtown", "flightCost": "", "hotelCost": 16074.6768, "transportCost": 1404.0, "dayNum": 4, "departHotel": "06:55 從飯店出發（步行 3 分鐘至 Wien Hbf 月台）", "cityEn": "Budapest, Hungary", "lat": 47.4979, "lon": 19.0402, "winterTemp": "0°C ~ 5°C", "winterRain": "30% 河畔風大", "hotelName": "Moxy Budapest Downtown（布達佩斯市中心莫克西）", "hotelMap": "https://www.google.com/maps/search/?api=1&query=Moxy+Budapest+Downtown", "notice": "清晨前往 Wien Hbf 仍可使用維也納 7 日通票（第 3 天）。抵達布達佩斯後於 BudapestGO App 啟用「72 小時交通通票 (Ft 5,500)」。傍晚多瑙河遊船建議預約 17:00–19:00 黃金夜景時段，甲板風大請戴毛帽圍巾！", "transport": "(MAV/ÖBB) 07:40–10:35 搭乘 ÖBB Railjet RJX267 前往布達佩斯；市內搭乘百年地鐵 M1 線 / Tram 2。", "spots": ["瓦采街 (Váci utca)", "聖伊什特萬聖殿聖誕市集", "多瑙河夕陽/夜景遊船"], "foods": ["Menza（匈牙利牛肉湯 Goulash）", "Kürtőskalács（現烤煙囪卷）"], "relatedSheets": ["參考_布達佩斯交通票", "參考_布達佩斯多瑙河遊船", "參考_ÖBB App 訂購車票後"], "timeline": [{"time": "06:55", "type": "交通", "title": "飯店退房出發前往 Wien Hbf 月台", "desc": "步行 3 分鐘即達車站月台，確認 ÖBB App 車票已按 Get tickets 產生 QR Code。"}, {"time": "07:40", "type": "交通", "title": "搭乘 ÖBB Railjet RJX267 前往布達佩斯", "desc": "10:35 抵達 Budapest-Keleti 東站；開啟 BudapestGO App 啟用「72 小時交通通票 (Ft 5,500)」，前往 Moxy 飯店寄放行李。"}, {"time": "12:00", "type": "餐廳", "title": "Menza（匈牙利牛肉湯 Goulash）", "desc": "位於李斯特廣場的人氣復古餐酒館，必點匈牙利牛肉湯與鴨胸燉飯。"}, {"time": "14:00", "type": "景點", "title": "瓦采街 (Váci utca) 步行購物街", "desc": "悠閒逛佩斯最熱鬧的聖誕購物街區，順道品嚐街頭現烤煙囪卷 (Kürtőskalács)。"}, {"time": "15:45", "type": "景點", "title": "聖伊什特萬聖殿 ＆ 殿前聖誕市集", "desc": "欣賞歐洲票選最美聖誕市集，傍晚整點還可觀賞聖殿外牆 3D 聖誕光雕秀。"}, {"time": "17:30", "type": "景點", "title": "多瑙河夕陽 / 夜景遊船", "desc": "提前 20 分鐘至碼頭登船，欣賞金黃色國會大廈與城堡山點燈夜景（甲板風大請戴毛帽）。"}]}, {"date": "2026-12-06", "weekday": "日", "country": "匈牙利", "city": "布達佩斯", "hotel": "布達佩斯 (Budapest) / Moxy Budapest Downtown", "flightCost": "", "hotelCost": "現場刷", "transportCost": "", "dayNum": 5, "departHotel": "08:45 從飯店出發", "cityEn": "Budapest, Hungary", "lat": 47.4979, "lon": 19.0402, "winterTemp": "-1°C ~ 4°C", "winterRain": "25% 晴冷", "hotelName": "Moxy Budapest Downtown（布達佩斯市中心莫克西）", "hotelMap": "https://www.google.com/maps/search/?api=1&query=Moxy+Budapest+Downtown", "notice": "布達佩斯 72 小時交通通票涵蓋 16 號小巴士（城堡纜車需另外購票，搭 16 號公車上山最省錢順路）。傍晚步行走過塞切尼鏈橋欣賞藍色時刻夜景。", "transport": "搭乘市區 16 號小巴士上城堡山，或自費搭乘城堡纜車 (Budavári Sikló)。", "spots": ["漁人堡 (Halászbástya)", "馬加什教堂 (Mátyás-templom)", "布達城堡 (Buda Castle)", "塞切尼鏈橋 (Széchenyi Chain Bridge)"], "foods": ["Ruszwurm（百年奶油蛋糕）", "Gundel Café（核桃巧克力薄餅）"], "relatedSheets": ["參考_布達佩斯交通票"], "timeline": [{"time": "08:45", "type": "交通", "title": "飯店出發前往布達城堡區", "desc": "持 72h 通票搭乘市區 16 號小巴士直上城堡山（或自費搭乘歷史城堡纜車 Budavári Sikló）。"}, {"time": "09:30", "type": "景點", "title": "漁人堡 (Halászbástya) ＆ 馬加什教堂", "desc": "在白色新哥德式迴廊俯瞰多瑙河與對岸國會大廈全景，參觀彩瓦屋頂馬加什教堂。"}, {"time": "11:30", "type": "景點", "title": "布達城堡 (Buda Castle) 皇宮區漫步", "desc": "沿城堡山步道欣賞皇家宮殿外觀與多瑙河兩岸風光。"}, {"time": "13:30", "type": "餐廳", "title": "Ruszwurm（百年奶油蛋糕）", "desc": "城堡區內 1827 年創立的皇室御用甜點老店，必點招牌香草千層奶油蛋糕 (Krémes)。"}, {"time": "15:30", "type": "景點", "title": "步行走過塞切尼鏈橋 (Széchenyi Chain Bridge)", "desc": "從布達側步行跨越經典石獅鎖鏈橋返回佩斯側，捕捉日落藍色時刻。"}, {"time": "18:00", "type": "餐廳", "title": "Gundel Café（核桃巧克力薄餅）", "desc": "品嚐匈牙利國寶級名店招牌核桃巧克力火焰薄餅 (Gundel Palacsinta) 與晚餐。"}]}, {"date": "2026-12-07", "weekday": "一", "country": "匈牙利", "city": "布達佩斯", "hotel": "布達佩斯 (Budapest) / Moxy Budapest Downtown", "flightCost": "", "hotelCost": "", "transportCost": "", "dayNum": 6, "departHotel": "08:30 從飯店出發（攜帶泳衣、拖鞋、浴巾）", "cityEn": "Budapest, Hungary", "lat": 47.4979, "lon": 19.0402, "winterTemp": "0°C ~ 4°C", "winterRain": "30% 陰冷", "hotelName": "Moxy Budapest Downtown（布達佩斯市中心莫克西）", "hotelMap": "https://www.google.com/maps/search/?api=1&query=Moxy+Budapest+Downtown", "notice": "泡戶外溫泉建議自備夾腳拖、泳衣與大浴巾（現場租借較貴），早上 09:00 前入場人較少且拍照最美！下午逛中央市場可採買貴腐酒、鵝肝醬與紅椒粉。", "transport": "搭乘歐洲大陸最古老百年地鐵 M1 線（黃線）直達 Széchenyi fürdő 站。", "spots": ["塞切尼溫泉浴場 (Széchenyi Thermal Bath)", "英雄廣場 (Hősök tere)", "布達佩斯中央市場 (Great Market Hall)", "Szimpla Kert 廢墟酒吧"], "foods": ["Lángos（現炸酸奶起司蒜香油餅）", "Pálinka（匈牙利傳統水果白蘭地）"], "relatedSheets": ["參考_布達佩斯交通票"], "timeline": [{"time": "08:30", "type": "交通", "title": "搭乘百年地鐵 M1 線（黃線）", "desc": "從飯店附近搭歐洲大陸最古老地鐵 M1 線直達 Széchenyi fürdő 站（請攜帶泳衣、拖鞋、浴巾）。"}, {"time": "09:00", "type": "景點", "title": "塞切尼溫泉浴場 (Széchenyi Thermal Bath)", "desc": "體驗宮殿級戶外露天溫泉池，冬日熱氣蒸騰拍照極夢幻。"}, {"time": "12:00", "type": "景點", "title": "英雄廣場 (Hősök tere) ＆ 城市公園", "desc": "泡完溫泉步行順遊氣勢磅礴的千年紀念碑廣場。"}, {"time": "13:15", "type": "景點", "title": "布達佩斯中央市場 (Great Market Hall) ＆ 午餐", "desc": "一樓採買紅椒粉、鵝肝醬與貴腐酒；二樓熟食區大啖現炸酸奶起司蒜香油餅 (Lángos)。"}, {"time": "17:30", "type": "景點", "title": "Szimpla Kert 廢墟酒吧 ＆ 品飲 Pálinka", "desc": "造訪布達佩斯最具代表性的藝術廢墟酒吧，小酌匈牙利傳統水果白蘭地 (Pálinka)。"}]}, {"date": "2026-12-08", "weekday": "二", "country": "匈牙利", "city": "布達佩斯", "hotel": "布達佩斯 (Budapest) / Moxy Budapest Downtown", "flightCost": "", "hotelCost": "", "transportCost": "", "dayNum": 7, "departHotel": "08:15 從飯店出發前往 Batthyány tér 站", "cityEn": "Budapest / Szentendre", "lat": 47.6694, "lon": 19.0756, "winterTemp": "-1°C ~ 4°C", "winterRain": "25% 乾冷", "hotelName": "Moxy Budapest Downtown（布達佩斯市中心莫克西）", "hotelMap": "https://www.google.com/maps/search/?api=1&query=Moxy+Budapest+Downtown", "notice": "【聖安德烈補票】若布達佩斯通票尚在效期內，搭乘 HÉV H5 郊區火車需加購「市區外延伸段補票 (約 400–500 HUF)」。聖安德烈是蔡依林《馬德里不思議》MV 實際取景地！New York Café 務必提前訂位。", "transport": "09:00 從 Batthyány tér 搭 HÉV H5 至 Szentendre (車程 40m)；13:30 返回布達佩斯市區；市內搭 Tram 2 沿河觀光。", "spots": ["聖安德烈舊城廣場 (Szentendre)", "彩色雨傘巷", "多瑙河岸鞋子雕像", "蓋勒特山丘 (Gellért Hill)"], "foods": ["Szentendre 鵝卵石小巷現炸 Lángos", "New York Café（世界最美咖啡館）", "Rosenstein（經典鵝肝料理）"], "relatedSheets": ["參考_布達佩斯交通票"], "timeline": [{"time": "08:15", "type": "交通", "title": "飯店出發前往 Batthyány tér 站", "desc": "搭地鐵 M2 線至 Batthyány tér 站轉乘 HÉV H5 郊區火車（需加購市區外延伸補票約 400–500 HUF）。"}, {"time": "09:00", "type": "景點", "title": "聖安德烈 (Szentendre) 藝術小鎮半日遊", "desc": "車程 40 分鐘抵達蔡依林《馬德里不思議》MV 取景地，漫步舊城廣場、彩色雨傘巷與鵝卵石小巷。"}, {"time": "12:00", "type": "餐廳", "title": "Szentendre 鵝卵石小巷現炸 Lángos", "desc": "在小鎮特色小店享用現點現炸的酥脆 Lángos 與熱飲。"}, {"time": "13:30", "type": "交通", "title": "搭 HÉV H5 返回布達佩斯市區", "desc": "約 14:15 回到市區，銜接下午茶預約時段。"}, {"time": "15:00", "type": "餐廳", "title": "New York Café（世界最美咖啡館）", "desc": "務必提前數週訂位，在金碧輝煌的文藝復興宮殿大廳享用咖啡與甜點。"}, {"time": "17:00", "type": "景點", "title": "Tram 2 沿河觀光 ➔ 多瑙河岸鞋子雕像 ➔ 蓋勒特山丘", "desc": "傍晚前往多瑙河畔向鞋子雕像致意，再登上蓋勒特山丘俯瞰布達佩斯全城夜景。"}, {"time": "19:30", "type": "餐廳", "title": "Rosenstein（頂級傳統鵝肝料理）", "desc": "深受當地人喜愛的家族老店，品嚐香煎鵝肝與經典猶太匈牙利菜。"}]}, {"date": "2026-12-09", "weekday": "三", "country": "奧地利", "city": "維也納", "hotel": "維也納 (Vienna) / ibis Wien Hauptbahnhof", "flightCost": "", "hotelCost": 9489.234999999999, "transportCost": 1635.0, "dayNum": 8, "departHotel": "08:20 從飯店出發前往 Budapest-Keleti 東站", "cityEn": "Vienna, Austria", "lat": 48.2082, "lon": 16.3738, "winterTemp": "0°C ~ 4°C", "winterRain": "35% 陰冷", "hotelName": "ibis Wien Hauptbahnhof（維也納中央車站宜必思）", "hotelMap": "https://www.google.com/maps/search/?api=1&query=ibis+Wien+Hauptbahnhof", "notice": "【重要省錢提醒】12/03 啟用的「維也納 7 日通票 (€25.20)」今天（第 7 天）仍全天有效至 24:00！12:20 抵達維也納後直接刷原通票搭地鐵 U1/U4 即可，完全不需再買市區票。Ribs of Vienna 務必預約。", "transport": "(OBB) 09:30–12:20 搭乘 ÖBB Railjet RJX 62 返回維也納；市內使用維也納 7 日通票搭乘地鐵 U1/U4 線。", "spots": ["瑪麗亞·特蕾西亞廣場", "維也納市政廳廣場聖誕市集", "百水公寓 (Hundertwasserhaus)"], "foods": ["Ribs of Vienna（一公尺地窖烤豬排）", "Demel（皇家御用帝國煎餅）"], "relatedSheets": ["參考_維也納交通票", "參考_ÖBB App 訂購車票後"], "timeline": [{"time": "08:20", "type": "交通", "title": "飯店退房出發前往 Budapest-Keleti 東站", "desc": "搭乘地鐵前往 Keleti 火車站準備返回奧地利維也納。"}, {"time": "09:30", "type": "交通", "title": "搭乘 ÖBB Railjet RJX 62 返回維也納", "desc": "12:20 抵達 Wien Hbf，飯店寄放行李後繼續刷「維也納 7 日通票 (€25.20，今日第 7 天有效至 24:00)」搭 U1/U4。"}, {"time": "13:30", "type": "景點", "title": "百水公寓 (Hundertwasserhaus)", "desc": "欣賞鬼才建築師百水先生設計的童話彩色波浪建築與藝術村。"}, {"time": "15:30", "type": "餐廳", "title": "Demel（皇家御用甜點店）", "desc": "品嚐現煎蓬鬆香甜的奧地利皇帝煎餅 (Kaiserschmarrn) 與紫羅蘭糖。"}, {"time": "17:00", "type": "景點", "title": "瑪麗亞·特蕾西亞廣場 ＆ 藝術史博物館聖誕市集", "desc": "逛雙子博物館之間的浪漫聖誕市集，拍下夜間宮殿燈飾。"}, {"time": "19:00", "type": "餐廳", "title": "Ribs of Vienna（一公尺地窖烤豬排）", "desc": "務必提前預約！在百年拱頂地窖餐廳大啖招牌一公尺長烤豬肋排。"}]}, {"date": "2026-12-10", "weekday": "四", "country": "斯洛伐克", "city": "布拉提斯拉瓦", "hotel": "維也納 (Vienna) / ibis Wien Hauptbahnhof", "flightCost": "", "hotelCost": "", "transportCost": "", "dayNum": 9, "departHotel": "08:30 從飯店出發（步行至 Wien Hbf 搭 REX 區域快車）", "cityEn": "Bratislava, Slovakia", "lat": 48.1486, "lon": 17.1077, "winterTemp": "-1°C ~ 4°C", "winterRain": "30% 多雲", "hotelName": "ibis Wien Hauptbahnhof（維也納中央車站宜必思）", "hotelMap": "https://www.google.com/maps/search/?api=1&query=ibis+Wien+Hauptbahnhof", "notice": "【Bratislava-Ticket (€19) 全包】昨天 7 日票到期後，今天買的 Bratislava-Ticket（前一天在 ÖBB App 買即可）已內含維也納市區往返、跨國火車及布拉提斯拉瓦市區 Tram 1 無限搭乘！抵達總站後穿過新大廳下樓搭 Tram 1 至 Námestie SNP 站。", "transport": "(OBB) 使用 Bratislava-Ticket (€19) 搭乘 REX 區域快車（每小時約兩班，自由座免劃位，車程約 1 小時）；當地搭 Tram 1 進老城區。", "spots": ["格拉蘇爾科維奇宮（總統府）", "聖米歇爾門 (Michael's Gate)", "守望者雕像 Čumil", "布拉提斯拉瓦城堡", "藍色教堂 (Blue Church)"], "foods": ["Bratislava Flagship Restaurant（羊起司麵疙瘩 & 麵包碗蒜頭濃湯）", "KORZO（烤鴨與蒜頭湯）"], "relatedSheets": ["參考_Bratislava-Ticket", "參考_ÖBB App 訂購車票後"], "timeline": [{"time": "08:30", "type": "交通", "title": "持 Bratislava-Ticket (€19) 前往斯洛伐克", "desc": "前一天在 ÖBB App 買好 Bratislava-Ticket (€19)，至 Wien Hbf 搭 REX 區域快車（自由座免劃位，車程約 1 小時），抵達後下樓轉 Tram 1 至 Námestie SNP 站。"}, {"time": "10:15", "type": "景點", "title": "總統府（格拉蘇爾科維奇宮）＆ 聖米歇爾門", "desc": "參觀斯洛伐克白宮外觀，穿過中世紀古城門進入舊城石板街區。"}, {"time": "11:30", "type": "景點", "title": "守望者雕像 Čumil ＆ 舊城廣場", "desc": "尋找從下水道探出頭微笑的知名銅像 Čumil 合影留念。"}, {"time": "12:30", "type": "餐廳", "title": "Bratislava Flagship Restaurant", "desc": "百年劇院改建的壯麗木質餐廳，必點國菜羊起司麵疙瘩 (Bryndzové Halušky) 與麵包碗蒜頭濃湯。"}, {"time": "14:30", "type": "景點", "title": "布拉提斯拉瓦城堡 (Bratislava Castle)", "desc": "登上山丘城堡俯瞰多瑙河與三國交界視野。"}, {"time": "16:15", "type": "景點", "title": "藍色教堂 (Blue Church / 聖伊麗莎白教堂)", "desc": "欣賞夢幻粉藍色新藝術風格童話教堂。"}, {"time": "18:00", "type": "餐廳", "title": "KORZO（烤鴨與蒜頭湯）➔ 搭 REX 火車返回維也納", "desc": "享用精緻斯洛伐克烤鴨晚餐後，持同一張 Bratislava-Ticket 搭火車返回 Wien Hbf。"}]}, {"date": "2026-12-11", "weekday": "五", "country": "奧地利", "city": "薩爾斯堡", "hotel": "薩爾斯堡 (Salzburg) / Hotel Restaurant Auerhahn", "flightCost": "", "hotelCost": 18759.23, "transportCost": 5508.0, "dayNum": 10, "departHotel": "06:45 退房出發（步行至 Wien Hbf 月台）", "cityEn": "Salzburg, Austria", "lat": 47.8095, "lon": 13.055, "winterTemp": "-2°C ~ 3°C", "winterRain": "40% 易有降雪", "hotelName": "Hotel Restaurant Auerhahn（薩爾斯堡奧爾哈恩飯店）", "hotelMap": "https://www.google.com/maps/search/?api=1&query=Hotel+Restaurant+Auerhahn+Salzburg", "notice": "【薩爾斯堡卡 48h 兌換步驟】09:53 抵達 Salzburg Hbf 後，請先前往車站大廳主要入口左側走廊的「薩爾斯堡旅遊服務中心 (Tourist Information)」，憑 App/信箱憑證換取實體感應晶片卡（首次進景點或搭公車感應才開始計時 48 小時）。", "transport": "(OBB) 07:28–09:53 搭乘 ÖBB Railjet RJX 160（Wien Hbf ➔ Salzburg Hbf）；市區持薩爾斯堡卡無限次免費搭公車。", "spots": ["米拉貝爾宮 (Schloss Mirabell)", "糧食胡同（莫札特出生地）", "薩爾斯堡要塞（含來回纜車）", "莫札特廣場聖誕市集"], "foods": ["Bärenwirt（百年老店現炸春雞）", "Café Konditorei Fürst（銀藍包裝正宗莫札特巧克力）"], "relatedSheets": ["參考_薩爾斯堡卡", "參考_ÖBB App 訂購車票後", "參考_住宿選區"], "timeline": [{"time": "06:45", "type": "交通", "title": "飯店退房出發前往 Wien Hbf 月台", "desc": "步行至車站搭乘早晨高速列車前往薩爾斯堡。"}, {"time": "07:28", "type": "交通", "title": "搭乘 ÖBB Railjet RJX 160（Wien Hbf ➔ Salzburg Hbf）", "desc": "09:53 抵達薩爾斯堡中央車站！立即前往大廳主要入口左側走廊的「薩爾斯堡旅遊服務中心」換取實體 48 小時薩爾斯堡卡。"}, {"time": "10:45", "type": "景點", "title": "米拉貝爾宮 (Schloss Mirabell) ＆ 花園", "desc": "電影《真善美》經典取景地，拍攝花園與遠方薩爾斯堡要塞同框美景。"}, {"time": "12:15", "type": "餐廳", "title": "Bärenwirt（百年老店現炸春雞）", "desc": "薩爾斯堡超人氣傳統餐館，必點皮脆肉嫩的金黃炸春雞 (Backhendl)。"}, {"time": "14:00", "type": "景點", "title": "糧食胡同 (Getreidegasse) ＆ 莫札特出生地", "desc": "刷薩爾斯堡卡免費參觀莫札特出生地博物館，漫步鍛鐵招牌商店街。"}, {"time": "15:15", "type": "餐廳", "title": "Café Konditorei Fürst（正宗莫札特巧克力）", "desc": "購買創始店手工製作的「銀藍色包裝」正宗莫札特巧克力。"}, {"time": "16:00", "type": "景點", "title": "薩爾斯堡要塞（含纜車）＆ 莫札特廣場聖誕市集", "desc": "刷卡搭纜車登上歐洲最大中世紀城堡俯瞰暮色，下山逛主教座堂與莫札特廣場聖誕市集。"}]}, {"date": "2026-12-12", "weekday": "六", "country": "奧地利", "city": "薩爾斯堡", "hotel": "薩爾斯堡 (Salzburg) / Hotel Restaurant Auerhahn", "flightCost": "", "hotelCost": "現場刷", "transportCost": "", "dayNum": 11, "departHotel": "08:30 從飯店出發前往搭乘 Bus 25", "cityEn": "Salzburg, Austria", "lat": 47.8095, "lon": 13.055, "winterTemp": "-3°C ~ 2°C", "winterRain": "45% 山區易雪", "hotelName": "Hotel Restaurant Auerhahn（薩爾斯堡奧爾哈恩飯店）", "hotelMap": "https://www.google.com/maps/search/?api=1&query=Hotel+Restaurant+Auerhahn+Salzburg", "notice": "【薩爾斯堡卡 48h 全涵蓋】Bus 25 公車、溫特斯山高空纜車（原價 €32）、海爾布倫宮（亮泉宮）與莫札特故居全部刷薩爾斯堡卡免費入場！溫特斯山頂海拔近 1,800 公尺，務必穿最保暖防風羽絨衣與手套。", "transport": "09:00 前搭乘 Bus 25 前往溫特斯山纜車站；下午搭 Bus 25 順遊海爾布倫宮與莫札特故居（薩爾斯堡卡全涵蓋）。", "spots": ["溫特斯山纜車 (Untersbergbahn)", "海爾布倫宮 / 亮泉宮 (Schloss Hellbrunn)", "莫札特故居 (Mozart-Wohnhaus)", "Salzach 河畔夜景"], "foods": ["Pfuner（傳統奧地利燉牛肉）", "Salzburger Nockerl（薩爾斯堡巨型蛋舒芙蕾）"], "relatedSheets": ["參考_薩爾斯堡卡"], "timeline": [{"time": "08:30", "type": "交通", "title": "飯店出發搭乘 Bus 25（薩爾斯堡卡全涵蓋）", "desc": "09:00 前於站前公車總站搭乘 Bus 25 直達溫特斯山纜車站。"}, {"time": "09:30", "type": "景點", "title": "溫特斯山高空纜車 (Untersbergbahn)", "desc": "持薩爾斯堡卡免費搭乘纜車（原價 €32）直上 1,776 公尺雪峰，眺望阿爾卑斯壯麗雪景。"}, {"time": "12:15", "type": "餐廳", "title": "Pfuner（傳統奧地利燉牛肉）", "desc": "下山享用道地奧地利暖胃燉牛肉料理與熱湯。"}, {"time": "14:00", "type": "景點", "title": "海爾布倫宮 / 亮泉宮 (Schloss Hellbrunn)", "desc": "搭 Bus 25 順遊大主教夏日行宮，參觀精巧機關噴泉與冬季聖誕市集（持卡免費）。"}, {"time": "16:15", "type": "景點", "title": "莫札特故居 (Mozart-Wohnhaus) ＆ Salzach 河畔夜景", "desc": "持卡參觀莫札特家族居住多年的故居，傍晚沿薩爾察赫河畔散步賞燈。"}, {"time": "18:30", "type": "餐廳", "title": "Salzburger Nockerl（薩爾斯堡巨型蛋舒芙蕾）", "desc": "品嚐象徵薩爾斯堡三座山峰的經典現烤巨大蛋霜舒芙蕾。"}]}, {"date": "2026-12-13", "weekday": "日", "country": "奧地利", "city": "哈修塔特", "hotel": "薩爾斯堡 (Salzburg) / Hotel Restaurant Auerhahn", "flightCost": "", "hotelCost": "", "transportCost": "", "dayNum": 12, "departHotel": "07:45 從飯店出發前往 Salzburg Hbf 站前公車總站", "cityEn": "Hallstatt, Austria", "lat": 47.5622, "lon": 13.6493, "winterTemp": "-3°C ~ 2°C", "winterRain": "45% 湖區濕冷/雪", "hotelName": "Hotel Restaurant Auerhahn（薩爾斯堡奧爾哈恩飯店）", "hotelMap": "https://www.google.com/maps/search/?api=1&query=Hotel+Restaurant+Auerhahn+Salzburg", "notice": "【哈修塔特交通提醒】Bus 150 超出薩爾斯堡卡範圍！建議直接在 ÖBB App 或現場買「Salzburg Hbf ➔ Hallstatt Bahnhof」聯程票（含 Bus 150 + REX 3412 火車）。抵達火車站後走下階梯搭 Stefanie 渡輪（船上僅收現金，單程約 €3.5–€4.0）。", "transport": "08:15 搭 Bus 150 至 Bad Ischl (09:37) ➔ 轉列車 REX 3412 (10:02–10:24) 至 Hallstatt 站 ➔ 轉 Stefanie 渡輪 (約 10:35 上岸)；16:07 原路返程。", "spots": ["哈修塔特明信片經典拍攝點 (Viewpoint Hallstatt)", "Marktplatz 舊城廣場", "木造船碼頭", "哈修塔特湖畔漫步"], "foods": ["Gasthof Zauner（現煎烤鱒魚）", "Schaumrolle（奧地利奶油蛋白捲）"], "relatedSheets": ["參考_薩爾斯堡到哈修塔特", "參考_薩爾斯堡卡"], "timeline": [{"time": "07:45", "type": "交通", "title": "飯店出發前往 Salzburg Hbf 站前公車總站", "desc": "確認已於 ÖBB App 買好或準備向司機購買「Salzburg Hbf ➔ Hallstatt Bahnhof」聯程票（Bus 150 超出薩爾斯堡卡範圍）。"}, {"time": "08:15", "type": "交通", "title": "Bus 150 ➔ 巴德伊舍轉 REX 3412 ➔ Stefanie 渡輪", "desc": "08:15 搭 Bus 150 至 Bad Ischl (09:37) ➔ 轉 10:02 REX 3412 至 Hallstatt 站 (10:24) ➔ 轉 Stefanie 渡輪（船上付現金約 €3.5–€4.0），約 10:35 登岸！"}, {"time": "10:45", "type": "景點", "title": "哈修塔特明信片經典拍攝點 (Viewpoint Hallstatt)", "desc": "沿湖畔步行前往北側經典角度，拍下教堂尖塔、木屋與雪山倒映湖面的絕美明信片風景。"}, {"time": "12:15", "type": "餐廳", "title": "Gasthof Zauner（現煎烤鱒魚）", "desc": "百年湖畔名店，必點現撈鹽烤阿爾卑斯湖鱒魚配水煮馬鈴薯。"}, {"time": "14:00", "type": "景點", "title": "Marktplatz 舊城廣場 ＆ 木造船碼頭慢遊", "desc": "逛童話般的彩色木屋廣場，並品嚐當地點心奶油蛋白捲 (Schaumrolle)。"}, {"time": "16:07", "type": "交通", "title": "搭渡輪轉火車與 Bus 150 原路返回薩爾斯堡", "desc": "約 18:30 返抵薩爾斯堡中央車站與飯店休息。"}]}, {"date": "2026-12-14", "weekday": "一", "country": "捷克", "city": "布拉格", "hotel": "布拉格 (Prague) / ibis Praha Wenceslas Square", "flightCost": "", "hotelCost": 12604.269999999999, "transportCost": 2801.3999999999996, "dayNum": 13, "departHotel": "09:20 退房出發前往 Salzburg Hbf", "cityEn": "Český Krumlov / Prague", "lat": 50.0755, "lon": 14.4378, "winterTemp": "-2°C ~ 3°C", "winterRain": "35% 陰冷", "hotelName": "ibis Praha Wenceslas Square（布拉格瓦茨拉夫廣場宜必思）", "hotelMap": "https://www.google.com/maps/search/?api=1&query=ibis+Praha+Wenceslas+Square", "notice": "【跨國移動日】若依火車票班次：10:11 Salzburg Hbf 搭 IC 641 至 Linz Hbf (11:30)，轉乘 11:54 EC 334 直達布拉格 Praha hl.n. (15:39)。抵達布拉格後建議下載 PID Lítačka App 購買「72 小時通票 (330 CZK)」（搭車前需按 Activate 倒數 2 分鐘）。", "transport": "(OBB) 10:11–11:30 搭乘 ÖBB IC 641（Salzburg Hbf ➔ Linz Hbf）；11:54–15:39 搭乘 ÖBB EC 334（Linz Hbf ➔ Praha hl.n.）。", "spots": ["庫倫洛夫 (CK) 舊城區 / 彩繪塔 / 理髮師橋（視接駁安排）", "布拉格舊城廣場與天文鐘夜景"], "foods": ["Krčma v Šatlavské（CK 地窖烤豬腳）", "Mincovna（布拉格舊城廣場燉牛肉）"], "relatedSheets": ["參考_布拉格交通票", "參考_跨國車票與專車的預訂時間", "參考_ÖBB App 訂購車票後"], "timeline": [{"time": "09:20", "type": "交通", "title": "飯店退房出發前往 Salzburg Hbf", "desc": "準備跨國移動前往捷克布拉格（或經庫倫洛夫 CK 小鎮）。"}, {"time": "10:11", "type": "交通", "title": "搭乘 ÖBB IC 641（Salzburg Hbf ➔ Linz Hbf）", "desc": "11:30 抵達林茲車站，站內同月台或鄰近月台轉乘下一班國際列車。"}, {"time": "11:54", "type": "交通", "title": "搭乘 ÖBB EC 334（Linz Hbf ➔ Praha hl.n.）", "desc": "15:39 抵達布拉格中央車站！下載 PID Lítačka App 購買「72 小時通票 (330 CZK)」（搭車前按 Activate 倒數 2 分鐘），前往 ibis 飯店辦理入住。"}, {"time": "17:00", "type": "景點", "title": "布拉格舊城廣場 ＆ 庫倫洛夫 (CK) 經典亮點參考", "desc": "（註：原表列 CK 小鎮舊城區/彩繪塔/理髮師橋與 Krčma v Šatlavské 地窖烤豬腳；若當日直達布拉格，傍晚可漫步布拉格舊城廣場與天文鐘聖誕市集）。"}, {"time": "19:00", "type": "餐廳", "title": "Mincovna（布拉格舊城廣場燉牛肉）", "desc": "位於舊城廣場旁的捷克現代傳統餐酒館，推薦經典奶油燉牛肉 (Svíčková) 與皮爾森生啤酒。"}]}, {"date": "2026-12-15", "weekday": "二", "country": "捷克", "city": "布拉格", "hotel": "布拉格 (Prague) / ibis Praha Wenceslas Square", "flightCost": "", "hotelCost": "", "transportCost": "", "dayNum": 14, "departHotel": "07:30 從飯店出發（趁清晨光線拍查理大橋空景）", "cityEn": "Prague, Czechia", "lat": 50.0755, "lon": 14.4378, "winterTemp": "-2°C ~ 3°C", "winterRain": "30% 乾冷", "hotelName": "ibis Praha Wenceslas Square（布拉格瓦茨拉夫廣場宜必思）", "hotelMap": "https://www.google.com/maps/search/?api=1&query=ibis+Praha+Wenceslas+Square", "notice": "布拉格 72 小時通票（330 CZK）已包含「佩特任山纜車 (Petřín Funicular)」！城堡區安檢排隊較長，建議早上 09:30 前抵達。", "transport": "全天步行搭配 22 號路面電車（Tram 22）及佩特任山纜車（持 72 小時通票免費搭乘）。", "spots": ["查理大橋晨景 (Charles Bridge)", "布拉格城堡區 (Prague Castle)", "聖維特大教堂 (St. Vitus Cathedral)", "黃金巷 (Golden Lane)", "佩特任山夜景 (Petřín Lookout)"], "foods": ["Lokál Dlouhááá（捷克現炸起司與生啤酒）", "Café Louvre（百年羅浮咖啡館早午餐）"], "relatedSheets": ["參考_布拉格交通票"], "timeline": [{"time": "07:30", "type": "景點", "title": "查理大橋晨景 (Charles Bridge)", "desc": "趁清晨觀光客尚未湧入時漫步查理大橋，欣賞晨霧中的聖徒雕像與伏爾塔瓦河畔。"}, {"time": "09:30", "type": "景點", "title": "布拉格城堡區、聖維特大教堂 ＆ 黃金巷", "desc": "搭 22 號路面電車上山，參觀宏偉的聖維特大教堂彩繪玻璃、舊皇宮與卡夫卡曾居住的黃金巷。"}, {"time": "13:00", "type": "餐廳", "title": "Café Louvre（羅浮咖啡館早午餐 / 午餐）", "desc": "愛因斯坦與卡夫卡常去的百年歷史咖啡館，推薦捷克傳統菜餚、熱巧克力與蘋果派。"}, {"time": "15:30", "type": "景點", "title": "佩特任山纜車 ＆ 佩特任山夜景 (Petřín Lookout)", "desc": "持布拉格 72 小時通票免費搭乘佩特任山纜車登頂，俯瞰布拉格「百塔之城」黃昏與華燈初上美景。"}, {"time": "18:30", "type": "餐廳", "title": "Lokál Dlouhááá（捷克現炸起司與生啤酒）", "desc": "布拉格最受歡迎的在地啤酒館，必點現炸起司 (Smažený sýr) 配塔塔醬與新鮮生啤。"}]}, {"date": "2026-12-16", "weekday": "三", "country": "捷克", "city": "布拉格", "hotel": "布拉格 (Prague) / ibis Praha Wenceslas Square", "flightCost": "", "hotelCost": "", "transportCost": "", "dayNum": 15, "departHotel": "09:00 從飯店出發", "cityEn": "Prague, Czechia", "lat": 50.0755, "lon": 14.4378, "winterTemp": "-2°C ~ 3°C", "winterRain": "35% 河畔微冷", "hotelName": "ibis Praha Wenceslas Square（布拉格瓦茨拉夫廣場宜必思）", "hotelMap": "https://www.google.com/maps/search/?api=1&query=ibis+Praha+Wenceslas+Square", "notice": "伏爾塔瓦河遊船冬日黃金夕陽時段約為 16:00–17:30，請務必確認登船碼頭（Judita Pier 查理大橋橋頭碼頭 或 Čech Bridge Pier 切赫橋碼頭），河風冷請選暖氣玻璃船或有提供熱紅酒與毛毯的小木船。", "transport": "搭乘地鐵 C 線（紅線）至 Vyšehrad 站，下午轉乘 17 號路面電車（Tram 17）沿河岸移動。", "spots": ["高堡區 (Vyšehrad) 俯瞰全景", "跳舞的房子 (Dancing House)", "伏爾塔瓦河遊船", "哈維爾市集 (Havelské tržiště)"], "foods": ["Naše Maso（頂級肉鋪現煎和牛堡）", "Sisters Bistro（捷克開放式三明治 Chlebíčky）"], "relatedSheets": ["參考_布拉格伏爾塔瓦河遊船", "參考_布拉格交通票"], "timeline": [{"time": "09:00", "type": "交通", "title": "搭乘地鐵 C 線（紅線）前往高堡區", "desc": "從飯店附近搭地鐵 C 線至 Vyšehrad 站，步行 5 分鐘進入古老城堡區。"}, {"time": "09:30", "type": "景點", "title": "高堡區 (Vyšehrad) 俯瞰全景", "desc": "波希米亞王朝發源地，沿城牆步道俯瞰伏爾塔瓦河 S 型河灣與紅屋頂全景，參觀聖彼得與聖保羅教堂。"}, {"time": "12:15", "type": "餐廳", "title": "Naše Maso（頂級肉鋪現煎和牛堡）", "desc": "布拉格傳奇肉鋪餐廳，現點現煎多汁和牛漢堡與熟成牛排。"}, {"time": "14:00", "type": "景點", "title": "跳舞的房子 (Dancing House) ＆ 哈維爾市集", "desc": "搭 17 號路面電車沿河欣賞前衛建築跳舞的房子，再逛百年歷史哈維爾市集挑選木偶與水晶紀念品。"}, {"time": "16:15", "type": "景點", "title": "伏爾塔瓦河黃昏遊船", "desc": "認明登船碼頭（Judita Pier 魔鬼河小木船 或 Čech Bridge Pier 暖氣玻璃船），從河面仰望查理大橋點燈。"}, {"time": "18:30", "type": "餐廳", "title": "Sisters Bistro（捷克開放式三明治 Chlebíčky）", "desc": "位於 Naše Maso 隔壁的精緻輕食店，品嚐色彩繽紛的創意捷克開放式三明治。"}]}, {"date": "2026-12-17", "weekday": "四", "country": "捷克", "city": "布拉格", "hotel": "布拉格 (Prague) / ibis Praha Wenceslas Square", "flightCost": "", "hotelCost": "", "transportCost": "", "dayNum": 16, "departHotel": "09:30 從飯店出發", "cityEn": "Prague, Czechia", "lat": 50.0755, "lon": 14.4378, "winterTemp": "-2°C ~ 2°C", "winterRain": "30% 陰冷", "hotelName": "ibis Praha Wenceslas Square（布拉格瓦茨拉夫廣場宜必思）", "hotelMap": "https://www.google.com/maps/search/?api=1&query=ibis+Praha+Wenceslas+Square", "notice": "【退稅與採買】今日若 72 小時通票到期，可於 PID Lítačka App 加購 1 張「24 小時通票 (120 CZK)」。在菠丹妮 Botanicus / Manufaktura 採買單筆滿 2,000 CZK 記得索取退稅單（Tax Free Form）並核對護照號碼。", "transport": "市區步行與搭乘 Tram 2 / Tram 18 電車。", "spots": ["市民會館 (Municipal House)", "火藥塔 (Powder Tower)", "瓦茨拉夫廣場 (Wenceslas Square)", "菠丹妮 Botanicus / Manufaktura 保養品採買"], "foods": ["Café Imperial（帝國咖啡館油封鴨腿，務必預約）", "Kantýna（肉鋪立吞烤牛排）"], "relatedSheets": ["參考_布拉格交通票", "參考_布拉格到機場交通"], "timeline": [{"time": "09:30", "type": "景點", "title": "火藥塔 (Powder Tower) ＆ 市民會館 (Municipal House)", "desc": "從老城東門火藥塔出發，欣賞新藝術運動建築巔峰「市民會館」華麗外觀與大廳。"}, {"time": "11:30", "type": "餐廳", "title": "Café Imperial（帝國咖啡館油封鴨腿）", "desc": "務必提前預約！在世界最美馬賽克磁磚餐廳享用招牌油封鴨腿與燉小牛膝。"}, {"time": "14:00", "type": "景點", "title": "瓦茨拉夫廣場 ＆ 菠丹妮 / Manufaktura 保養品採買", "desc": "進行最後伴手禮衝刺（菠丹妮死海泥皂、玫瑰精華油、Manufaktura 啤酒花洗髮精），單筆滿 2,000 CZK 務必索取退稅單！"}, {"time": "18:00", "type": "餐廳", "title": "Kantýna（肉鋪立吞烤牛排）", "desc": "前銀行大廳改建的質感肉鋪餐酒館，享受高 CP 值現切炭烤牛排與生啤酒，回飯店整理退稅行李。"}]}, {"date": "2026-12-18", "weekday": "五", "country": "捷克 ➔ 台灣", "city": "機上", "hotel": "機上", "flightCost": "", "hotelCost": "", "transportCost": "", "dayNum": 17, "departHotel": "06:45 準時退房，搭乘預約好的 Bolt / Uber 前往機場", "cityEn": "Prague ➔ In Flight", "lat": 50.1008, "lon": 14.26, "winterTemp": "-3°C ~ 2°C", "winterRain": "30% 清晨寒冷", "hotelName": "機上過夜（中華航空 CI0068）", "hotelMap": "https://www.google.com/maps/search/?api=1&query=Vaclav+Havel+Airport+Prague", "notice": "【機場退稅時間軸】06:45 叫車出發（約 25–30 分鐘，車資 400–600 CZK）➔ 07:15 抵達機場先辦退稅海關蓋章（托運行李退稅商品先別託運！）➔ 航空公司報到託運 ➔ 08:30 安檢免稅店 ➔ 10:30 CI0068 起飛。", "transport": "06:45 預約 Bolt / Uber 車輛直達布拉格機場（PRG）；10:30 搭乘中華航空 CI0068 起飛返台。", "spots": ["布拉格瓦茨拉夫·哈維爾機場 (PRG) 退稅櫃檯與免稅店"], "foods": ["機上餐點"], "relatedSheets": ["參考_布拉格到機場交通"], "timeline": [{"time": "06:45", "type": "交通", "title": "飯店退房，搭乘預約好的 Bolt / Uber 前往機場", "desc": "清晨不塞車約 25–30 分鐘直達布拉格瓦茨拉夫·哈維爾機場 (PRG)（車資約 400–600 CZK）。"}, {"time": "07:15", "type": "交通", "title": "辦理退稅海關蓋章 ＆ 航空公司報到託運", "desc": "重要順序：先帶退稅單、護照、登機證及「未拆封退稅商品」至海關蓋章（托運類先別託運！），蓋完章再去櫃檯託運行李並至退稅櫃檯領款。"}, {"time": "08:30", "type": "景點", "title": "布拉格機場免稅店最後巡禮", "desc": "通過護照查驗與安檢後，逛機場免稅店或至貴賓室休息。"}, {"time": "10:30", "type": "交通", "title": "搭乘中華航空 CI0068 起飛返台", "desc": "享用回程機上餐點，機上休息。"}]}, {"date": "2026-12-19", "weekday": "六", "country": "台灣", "city": "台北", "hotel": "-", "flightCost": "", "hotelCost": "", "transportCost": "", "dayNum": 18, "departHotel": "05:25 平安返抵桃園國際機場 (TPE)", "cityEn": "Taipei, Taiwan", "lat": 25.0797, "lon": 121.2342, "winterTemp": "17°C ~ 21°C", "winterRain": "25% 舒適晴朗", "hotelName": "溫暖的家（2026 瓷婚之旅圓滿成功 🎉）", "hotelMap": "https://www.google.com/maps/search/?api=1&query=Taiwan+Taoyuan+International+Airport", "notice": "歡迎回家！領取行李後請清點戰利品與護照，整理滿滿的奧捷匈斯 18 天瓷婚浪漫回憶。", "transport": "05:25 返抵台北桃園國際機場 (TPE)。", "spots": ["溫暖的家"], "foods": ["台灣道地早餐"], "relatedSheets": [], "timeline": [{"time": "05:25", "type": "交通", "title": "平安返抵台北桃園國際機場 (TPE)", "desc": "領取行李、清點戰利品與護照，圓滿完成 2026 瓷婚奧捷匈斯 18 天之旅！"}]}], "refSheets": [{"id": "參考_ÖBB App 訂購車票後", "title": "ÖBB App 訂購車票後", "category": "交通票券", "icon": "📱", "badge": "必讀：Get tickets 領票與 12 碼印票", "rows": [["在 ÖBB App 訂購車票後，系統發出的郵件只是「訂購確認信」，不能當作車票使用。 你必須在 App 內執行「啟用 / 下載車票（Get tickets）」的動作，產生 QR Code 才是真正的有效車票。 [1]"], ["請依照以下簡單的 4 個步驟在 App 內領取你的車票："], ["📱 ÖBB App 領取車票四步驟"], ["第一步：開啟選單：打開 ÖBB App，點擊左上角的選單（三條槓 ☰）。"], ["第二步：進入我的行程：點選 「My Trips」（我的行程） 或 「Tickets」。"], ["第三步：點擊行程並領取：找到你購買的該筆訂單，點擊進入後，會看到一個顯眼的 「Get tickets」（取得車票） 或 「Generate Tickets」 按鈕。"], ["第四步：確認並產生 QR Code：系統會彈出提示，確認後就會正式產生車票的 QR Code。搭車時直接給查票員感應這個 QR Code 即可。"], ["⚠️ 實用 Concierge 重大提醒（非常重要！）"], ["不能退改：一旦點擊了「Get tickets」，車票就會正式生效並綁定，之後該筆訂單將無法在線上辦理退票或更改班次。建議在出發當天或確認行程完全不會變動時，再點擊產生車票。"], ["離線儲存：產生 QR Code 後，建議可以將車票匯出存入手機的 Apple Wallet / Google Wallet，或者直接截圖。因為跨國火車行駛到兩國邊境時，網路訊號通常很差，截圖或放入電子錢包可以確保查票時能隨時離線開啟。"], ["如果你在信箱中收到了 12 位數的取票代碼（Pickup Code），可以非常方便地在維也納中央車站（Wien Hbf）或其他 ÖBB 車站的紅色自動售票機列印出實體紙本車票。"], ["請依照以下現場操作步驟進行："], ["🎫 車站自動售票機列印步驟"], ["第一步：找到紅色售票機：在車站大廳找到 ÖBB 的紅色觸控螢幕售票機。"], ["第二步：切換語言：螢幕右下方通常有國旗圖示，點選切換為 「English」（英語）或你熟悉的語言。"], ["第三步：選擇取票功能：在主畫面上，找到並點擊 「Pick up ticket」（取票）或 「Collect ticket」 按鈕。"], ["第四步：輸入 12 位數代碼：螢幕會跳出鍵盤，輸入你信箱中的 12 位數 Pickup Code，確認無誤後點擊右下角的黃色「Next」或「Confirm」。"], ["第五步：列印車票：售票機會顯示你的行程資訊，確認無誤後點擊 「Print ticket」，車票就會從機器下方的取票口印出。"], ["⚠️ 實用 Concierge 提醒"], ["1. 取票後 App 即失效：一旦你使用 Pickup Code 在實體機器下列印出紙本車票，該張車票在手機 App 內的電子版就會自動失效。搭車與查票時，你必須出示印出來的實體紙本車票，查票員只認實體票上的條碼。"], ["2. 務必妥善保管：實體紙本車票如果弄丟，無法重新列印，也無法再用 App 證明，因此印出後請務必收好。"]]}, {"id": "參考_住宿選區", "title": "住宿選區", "category": "住宿攻略", "icon": "🏨", "badge": "四大城市樞紐選區速查", "rows": [["根據您完整的跨國行程（布達佩斯 ➔ 維也納 ➔ 薩爾斯堡 ➔ 布拉格），各地區的住宿選區關鍵在於「大眾運輸交通樞紐」與「行李拖行方便度」。", "", "", ""], ["以下為您盤點這四個城市最優的住宿區域及推薦理由：", "", "", ""], ["1. 布達佩斯（12/03 - 12/07）：最推薦「佩斯第 V 區（內城區 Belváros / 市中心）」", "", "", ""], ["最佳住宿區域：第 V 區 (Belváros)，靠近 Deák Ferenc tér（迪阿克廣場） 或 Astoria 站。", "", "", ""], ["選擇理由：", "", "", ""], ["交通極強：Deák Ferenc tér 是布達佩斯地鐵 M1、M2、M3 三條線唯一的交會大站，從機場搭 100E 巴士直達市區就在此下車，往返 FlixBus Népliget 總站也極快。", "", "", ""], ["步行即達景點與聖誕市集：距離聖伊什特萬聖殿聖誕市集、瓦采街購物區、多瑙河夜遊碼頭均在步行 5–10 分鐘距離內。", "", "", ""], ["備選區域：第 VII 區（伊莉莎白城/廢墟酒吧區），若想離紐約咖啡館或特色酒吧更近可考慮。", "", "", ""], ["2. 維也納（12/07 - 12/11）：最推薦「維也納中央車站區 (Wien Hbf)」", "", "", ""], ["最佳住宿區域：維也納中央車站 (Wien Hauptbahnhof / Wien Hbf) 附近。", "", "", ""], ["選擇理由：", "", "", ""], ["大火車無縫接駁：12/07 從布達佩斯搭火車抵達、12/10 去斯洛伐克、12/11 搭火車前往薩爾斯堡，全部都在 Wien Hbf 上下車！住在車站旁邊，下車即 Check-in，省去拖著大件行李轉乘地鐵的痛苦。", "", "", ""], ["市區交通極方便：搭乘地鐵 U1 線從 Wien Hbf 只要 3 站（約 5 分鐘）就直達市中心的聖史蒂芬大教堂，兼具長途交通與市區觀光優勢。", "", "", ""], ["生活機能佳：Wien Hbf 車站內有大型超市（如 Spar、Billa）與美食街，即使週日市區店家打烊，車站內的超市依然營業。", "", "", ""], ["3. 薩爾斯堡（12/11 - 12/14）：最推薦「薩爾斯堡中央車站區 (Salzburg Hbf)」", "", "", ""], ["最佳住宿區域：薩爾斯堡中央車站 (Salzburg Hbf) 步行 5 分鐘圈內。", "", "", ""], ["選擇理由：", "", "", ""], ["樞紐中心：", "", "", ""], ["12/11 從維也納搭火車抵達 Salzburg Hbf。", "", "", ""], ["12/12 往溫特斯山纜車（Bus 25）的起點站就在車站前公車總站。", "", "", ""], ["12/13 往哈修塔特（Bus 150）的起點站也在車站前。", "", "", ""], ["12/14 專車（CK Shuttle）接送上車極方便。", "", "", ""], ["免拖行李走石板路：薩爾斯堡舊城區全是古老石板路且禁止外車隨意進入，住在車站附近，景點搭公車 5–8 分鐘即可抵達，完全免除拖行李過橋走石板路的困擾。", "", "", ""], ["4. 布拉格（12/14 - 12/18）：最推薦「舊城區 (Staré Město) 邊緣」或「共和國廣場 (Náměstí Republiky)」", "", "", ""], ["最佳住宿區域：共和國廣場 (Náměstí Republiky) 附近 或 火藥塔周邊。", "", "", ""], ["選擇理由：", "", "", ""], ["CK Shuttle 直接送到門口：專車會直接載您到布拉格飯店門口，因此住在舊城區周邊不用擔心行李搬運問題。", "", "", ""], ["觀光與生活機能兼備：距離舊城廣場（天文鐘/聖誕市集）步行只需 5–8 分鐘，同時緊鄰 Palladium 大型購物中心與地鐵 B 線，生活採買與餐館選擇極多。", "", "", ""], ["避開最擁擠的核心石板區：比直接住在查理大橋或天文鐘正前方安靜許多，但又能保有走路逛遍全景點的絕佳便利性。", "", "", ""], ["住宿選區總結速查表", "", "", ""], ["城市", "最優住宿區域", "關鍵首選地標/地鐵站", "核心優勢"], ["布達佩斯", "佩斯第 V 區 (Belváros)", "Deák Ferenc tér 站", "機場巴士直達、三線地鐵交會、步行至聖誕市集與遊船碼頭"], ["維也納", "中央車站區", "Wien Hauptbahnhof (Wien Hbf)", "跨國火車/斯洛伐克一日遊零距離，地鐵 5 分鐘進市中心"], ["薩爾斯堡", "中央車站區", "Salzburg Hauptbahnhof (Salzburg Hbf)", "Bus 150（哈修塔特）與 Bus 25（溫特斯山）起點，免拖行李走石板路"], ["布拉格", "舊城區邊緣 / 共和國廣場", "Náměstí Republiky 站", "景點全步行可達，生活採買方便，專車直接送達"]]}, {"id": "參考_入境交通", "title": "入境交通", "category": "交通票券", "icon": "✈️", "badge": "維也納機場轉乘攻略", "rows": [["當天早上 06:50 抵達維也納機場後，完全不需要進維也納市區，最方便省時的方式是直接在維也納機場搭乘長途客運到布達佩斯：", "", "", ""], ["搭乘工具：FlixBus 或 RegioJet（兩家皆有「Vienna Airport ➔ Budapest Népliget/Kelenföld」路線）。", "", "", ""], ["車程時間：約 2.5 ~ 3 小時。", "", "", ""], ["預訂建議：班次約每 1~2 小時一班。建議購買 08:30 ~ 09:00 之間發車的班次（預留 1.5 ~ 2 小時通關與領行李時間），可以在中午 11:30 左右輕鬆抵達布達佩斯 Check-in 開始行程！", "", "", ""], ["沒有直達的 ÖBB 火車。", "", "", ""], ["ÖBB（奧地利國鐵）營運的長途高速火車（Railjet）都是從維也納中央車站（Wien Hbf）發車前往布達佩斯，並沒有從「維也納機場站 (Flughafen Wien)」直達布達佩斯東站 (Keleti) 的班次。", "", "", ""], ["若您一定要搭乘 ÖBB 火車，或是想直接搭車直達，有以下兩種最佳方案：", "", "", ""], ["1. 最推薦：搭乘跨國長途巴士（真直達，最省心）", "", "", ""], ["交通工具：FlixBus 或 RegioJet（直接在維也納機場客運航廈上車）。", "", "", ""], ["路線：維也納機場 (Vienna Airport) ➔ 布達佩斯 (Budapest Népliget / Kelenföld)。", "", "", ""], ["優點：不需搬行李換車，上車後可以直接休息睡覺，車程約 2.5 ~ 3 小時，票價也相當便宜。", "", "", ""], ["2. 搭乘 ÖBB 火車（需轉乘一次）", "", "", ""], ["路線：", "", "", ""], ["1. 先從維也納機場搭乘 ÖBB 區域火車（RJ / S-Bahn）至 維也納中央車站 (Wien Hbf)（車程約 15 分鐘）。", "", "", ""], ["2. 在維也納中央車站同站轉乘 ÖBB Railjet 高速火車 前往布達佩斯東站 (Keleti)（車程約 2.5 小時）。", "", "", ""], ["總耗時：含轉乘等車時間約 3 小時出頭。", "", "", ""], ["建議：當天 06:50 剛落地且帶著大件行李，搭乘 FlixBus / RegioJet 客運直達會比搭火車轉乘輕鬆許多！", "", "", ""], ["當您搭乘 FlixBus 或 RegioJet 從維也納機場抵達布達佩斯時，停靠的站點取決於您購買的車次。主要有以下兩個地點（皆有地鐵可輕鬆前往市區）：", "", "", ""], ["巴士公司", "布達佩斯停靠站點", "地理位置與地鐵轉乘", "建議與特色"], ["FlixBus", "Népliget 巴士總站", "位於佩斯區東南部。", "最主要且方便的站點。搭乘地鐵 M3 線約 10~15 分鐘即可直達市中心的 Kalvin tér、Deák Ferenc tér 等熱門住宿區。"], ["(多數班次)", "", "出站即連結 地鐵 M3 線（藍線）Népliget 站。", ""], ["RegioJet / FlixBus", "Kelenföld 車站", "位於布達區西南部。", "屬於大型鐵公路轉運站。搭乘地鐵 M4 線可直達市區的蓋勒特廣場或中央市場（Fővám tér）。"], ["(部分班次)", "(Kelenföld vasútállomás)", "出站即連結 地鐵 M4 線（綠線）Kelenföld 站。", ""], ["交通與購票小叮嚀", "", "", ""], ["1. 訂票時確認站點：在 App 上選購車票時，起點選 Vienna Airport，終點建議優先選擇 Budapest Népliget（通常班次最多、離市中心地鐵路線最直覺）。", "", "", ""], ["2. 銜接市區交通：抵達 Népliget 或 Kelenföld 巴士站後，直接開啟 BudapestGO App 激活您的 72 小時交通 Pass，即可直接刷 Pass 搭乘地鐵 M3 或 M4 線輕鬆抵達飯店寄放行李！", "", "", ""]]}, {"id": "參考_布達佩斯交通票", "title": "布達佩斯交通票", "category": "交通票券", "icon": "🇭🇺", "badge": "72h通票 & 聖安德烈 H5 補票", "rows": [["購買 Pass 能省去每次找機器買單程票的麻煩，還可以無限次搭乘地鐵、黃色路面電車（Tram）與公車。", "", "", ""], ["布達佩斯主要交通 Pass 種類與選擇", "", "", ""], ["通票類型", "參考票價 (HUF)", "約合台幣 (TWD)", "適用對象與使用特色"], ["72小時交通通票", "約 Ft 5,500", "約 $480", "最推薦！ 72 小時內無限次搭乘所有市區大眾運輸（地鐵 M1-M4、Tram、公車）。"], ["(Budapest 72-hour travelcard)", "", "", ""], ["24小時交通通票", "約 Ft 2,500", "約 $220", "適合停留時間較短，或單日需要密集搭車移動時使用。"], ["(Budapest 24-hour travelcard)", "", "", ""], ["布達佩斯卡", "約 Ft 19,000起", "約 $1,650起", "包含無限次交通 + 免費進入部分博物館 + 溫泉門票折扣。若不打算看大量博物館，買一般交通通票即可。"], ["(Budapest Card 72h/96h)", "", "", ""], ["使用重點與建議", "", "", ""], ["計時方式：與維也納一樣採「24/72 小時制」，從您指定的激活時間起算 72 小時，而非按日曆天計算。", "", "", ""], ["推薦購買方式（BudapestGO App）： 建議出發前下載官方 BudapestGO App，直接在手機上購買電子 Pass。搭車或遇到查票時，只需出示手機 QR Code 即可，非常方便。", "", "", ""], ["100E 機場巴士注意： 若有搭乘往返布達佩斯機場的 100E 直達快線巴士，該路線屬於特殊機場線，無法使用一般交通 Pass，需另外單獨購買 100E 車票（約 Ft 2,200）。一般 Pass 可搭乘 200E 轉地鐵 M3 線進市區。", "", "", ""], ["蔡依林（Jolin）出道多年的許多經典 MV 曾遠赴世界各大城市取景，最具代表性且常被討論的幾部 MV 包括：", "", "", ""], ["1. 《馬德里不思議》➔ 匈牙利‧布達佩斯近郊（聖安德烈小鎮 Szentendre）", "", "", ""], ["常見誤解：雖然歌名叫做「馬德里」，但其實完全不在西班牙馬德里拍攝！", "", "", ""], ["真實地點：是在匈牙利布達佩斯近郊、充滿彩色房子與小巷風情的聖安德烈（Szentendre，小安鎮）拍攝的。", "", "", ""], ["2. 《馬賽克》➔ 匈牙利‧布達佩斯", "", "", ""], ["取景於布達佩斯的古老街道與建築，充滿復古歐陸氛圍。", "", "", ""], ["加入聖安德烈（Szentendre）非常順路且方便！", "", "", ""], ["聖安德烈距離布達佩斯市中心僅約 40 分鐘車程（搭乘郊區鐵路 HÉV H5 線直達），是蔡依林《馬德里不思議》MV 的實際取景地。小鎮到處是巴洛克風格的彩色房子、鵝卵石小巷與特色藝廊，規模精巧，非常適合安排 半日遊（約 3.5 – 4.5 小時即可逛完）。", "", "", ""], ["最推薦插入的時間點：12/06（日）上午或下午", "", "", ""], ["將聖安德烈安排在 12/06（日） 是最順暢的選擇：", "", "", ""], ["12/06（日）原規劃：市區搭 2 號路面電車、紐約咖啡館、蓋勒特山丘、多瑙河岸鞋子雕像。", "", "", ""], ["調整後方案：", "", "", ""], ["上午 (09:00 - 13:30)：搭乘 HÉV H5 郊區鐵路 前往 聖安德烈（Szentendre） 漫步、尋找《馬德里不思議》MV 景點（如舊城廣場、彩色小巷、聖誕博物館）、品嚐現炸 Lángos。", "", "", ""], ["下午與晚上 (14:30 - 21:00)：返回布達佩斯市區，造訪紐約咖啡館下午茶、搭乘 2 號電車觀光、前往多瑙河岸鞋子雕像與蓋勒特山丘賞夜景。", "", "", ""], ["如何搭車前往聖安德烈（交通指引）", "", "", ""], ["1. 去程：", "", "", ""], ["從布達佩斯市區搭乘地鐵 M2 線（紅線）至 Batthyány tér 站。", "", "", ""], ["站內轉乘 HÉV H5 郊區鐵路（往 Szentendre 方向），搭到終點站 Szentendre 站（車程約 40 分鐘）。", "", "", ""], ["2. 票價：", "", "", ""], ["若持有布達佩斯市區交通通票，只需額外購買「市區外延伸段補票（Kiegészítő jegy，約 400–500 HUF / 約台幣 $40）」即可。", "", "", ""]]}, {"id": "參考_布達佩斯多瑙河遊船", "title": "布達佩斯多瑙河遊船", "category": "遊船體驗", "icon": "🚢", "badge": "夕陽夜景船種價格比較", "rows": [["在布達佩斯搭乘多瑙河遊船，最推薦的時段是「夕陽至入夜時分」（大約 17:00 – 19:00，視季節日落時間而定）。這時候搭乘可以同時欣賞到金黃色的夕陽餘暉，以及國會大廈與城堡山打上金色燈光的絕美夜景（布達佩斯國會大廈點燈時極為震撼）。", "", "", ""], ["以下為您整理購票管道、購買時機與價格分析：", "", "", ""], ["1. 船票價格與船種分類", "", "", ""], ["遊船主要分為「觀光航行（含飲料）」與「晚餐遊船」兩大類：", "", "", ""], ["遊船類型", "包含內容", "平均價格 (歐元 / 台幣)", "特色與推薦對象"], ["標準觀光遊船", "1 小時航程 + 1-2 杯迎賓飲料（香檳/葡萄酒/果汁）+ 語音導覽", "€12 – €22", "最推薦！ CP 值高，能專心拍照與觀賞夜景。"], ["(最熱門首選)", "", "(約 NT$ 420 – 780)", ""], ["高級夜間觀光船", "1–1.5 小時航程 + 全景玻璃窗 + 迎賓酒 + 琴聲或民俗表演", "€22 – €30", "船艙設備較新、空間寬敞，適合追求舒適質感的旅客。"], ["(如 Silverline / Legenda)", "", "(約 NT$ 780 – 1,050)", ""], ["自助/套餐晚餐遊船", "1.5–2 小時航程 + 3-4 道式晚餐或自助餐 + 現場音樂表演", "€55 – €90+", "適合慶祝節日或浪漫約會，邊用餐邊"], ["", "", "(約 NT$ 1,900 – 3,100)", ""], ["2. 何時買？（預訂時機）", "", "", ""], ["熱門時段（黃昏/夜景班次、12月聖誕季、跨年）：", "", "", ""], ["建議提前 2 – 4 週預訂。", "", "", ""], ["理由：夜間熱門時段（特別是 17:30 – 19:30 點燈黃金期）非常搶手，現場排隊往往買不到理想的班次，或者只剩位置較差的班次。", "", "", ""], ["一般日間班次：", "", "", ""], ["提前 1 – 3 天 或 當天現場買 即可。", "", "", ""], ["3. 怎麼買？（購票管道與熱門船家）", "", "", ""], ["線上預訂（最推薦，可鎖定黃金夜景時段）", "", "", ""], ["1. 中文旅遊平台（KKday / Klook）：", "", "", ""], ["優勢：全中文介面、台幣結算，提供多家布達佩斯船家的船票（如 Legenda 或 Silverline）。", "", "", ""], ["優勢：可直接選擇預訂熱門的「夕陽夜景班次」，到現場出示手機 QR Code 即可登船。", "", "", ""], ["2. 國際票券平台（GetYourGuide / Viator）：", "", "", ""], ["布達佩斯多瑙河遊船品項最齊全，有數千則旅客真實評價可參考。", "", "", ""], ["3. 熱門船家官網直營：", "", "", ""], ["Legenda City Cruises（評價極高的老字號全景玻璃船，含多國語言語音導覽，含中文）。", "", "", ""], ["Silverline Cruises（提供多種夜遊與表演餐船）。", "", "", ""], ["現場購票", "", "", ""], ["地點：前往 3 號橋與 7 號橋之間的多瑙河沿岸碼頭（Dock 1 – Dock 12，靠近伊莉莎白橋至瑪格麗特橋一帶）。", "", "", ""], ["方式：碼頭邊有各大遊船公司的售票亭，可直接詢問下一班次並購票上船（刷卡或付現皆可）。", "", "", ""], ["💡 搭船實用小建議", "", "", ""], ["1. 認準登船碼頭 (Dock)：預訂完成後，確認憑證上的 Dock 編號（例如 Dock 7 或 Dock 11），建議比發車/開船時間提前 20–30 分鐘抵達碼頭，才能搶到露天上層甲板的絕佳拍照座位。", "", "", ""], ["2. 保暖準備（特別是秋冬/12月）：河面上風大且體感溫度極低，若想在室外甲板拍照，務必穿著厚羽絨衣、戴好毛帽與圍巾。", "", "", ""]]}, {"id": "參考_維也納交通票", "title": "維也納交通票", "category": "交通票券", "icon": "🇦🇹", "badge": "已更新：7日通票 €25.2 + Schwechat補票 €2.2", "rows": [["1. 為什麼建議購買「維也納 7 日通票 (€25.20)」？（12/03 – 12/09 連續 7 日完美通用）"], ["日曆天連續 7 日制：維也納 7 日通票（7-Day Ticket Wien，售價 €25.20）從您指定的啟用日 00:00 起算連續 7 個日曆天，至第 7 天的 24:00 結束。"], ["完整涵蓋兩段維也納停留：12/03（週四）啟用後，一路有效至 12/09（週三）24:00！不僅涵蓋 12/03–12/05 的維也納行程，連 12/09 從布達佩斯返回維也納的全天市區交通也一併包辦。"], ["12/10 斯洛伐克一日遊無縫接軌：7 日票於 12/09 午夜到期後，12/10 購買的 Bratislava-Ticket（€19）本身已內含當天維也納市區往返車站的交通，完全不需再額外買市區票！"], ["冬日旅遊更舒適：12 月維也納氣溫偏低（約 0°C ~ 5°C），持有 7 日通票隨時可跳上地鐵（U-Bahn）或路面電車（Tram）暖和移動。"], ["2. 第一天（12/03）機場到市區購票與搭車細節（Schwechat 延伸補票）"], ["核心規定：維也納 7 日通票僅限維也納市區核心區（Kernzone Wien / Zone 100）使用，維也納國際機場（Flughafen Wien）位於外圍區域。"], ["最佳購票組合（ÖBB App 或機場售票機）：於 ÖBB App 購買「維也納 7 日通票 (€25.20)」＋ 1 張外圍單程補票「機場到市區邊界（Schwechat）的單程延伸票（約 €2.20 左右）」。"], ["搭乘方式：抵達機場後搭乘 S-Bahn S7 或 ÖBB 區域火車（RJ / RJX）約 15–25 分鐘直達維也納中央車站（Wien Hbf），無需購買昂貴的 CAT 快線（€14.90）。"], ["3. ÖBB App 與 Wiener Linien App 比較", "ÖBB App（奧地利國鐵）", "Wiener Linien App（維也納市區運輸）"], ["涵蓋範圍", "全奧地利跨城/跨國 + 維也納市區通票與 Schwechat 延伸補票", "僅維也納市區（Zone 100），無法直接買機場延伸補票"], ["最佳建議", "推薦使用 ÖBB App 一站式購齊「7 日通票 €25.20 + 機場至 Schwechat 延伸票 €2.20」與所有跨國火車票！", "適合搭配查詢市區電車即時到站時刻"]]}, {"id": "參考_Bratislava-Ticket", "title": "Bratislava-Ticket", "category": "交通票券", "icon": "🇸🇰", "badge": "€19 跨國聯票 & Tram 1 月台", "rows": [["從維也納中央車站（Wien Hbf）到布拉提斯拉瓦總站（Bratislava hl.st.）不需要定位（劃位），直接上車找空位坐即可。 [1, 2]", "", "", ""], ["這是因為這兩座首都之間最主要的跨國主力列車是 ÖBB 區域快車（REX）。以下是這條路線的乘車特性： [1, 2]", "", "", ""], ["💡 乘車須知", "", "", ""], ["1. 自由座形式：REX 屬於區域通勤火車，全車不提供劃位（不開放定位），性質就像搭區間車，上車後只要看到沒人坐的空位都可以直接就座。", "", "", ""], ["2. 班次非常密集：每小時大約有兩班 REX 列車發車，車程僅需 1 小時左右，座位通常很充足，不常遇到完全沒位置坐的情況。", "", "", ""], ["3. 極少數長途車例外：少數從維也納發車、中途停靠布拉提斯拉瓦並繼續開往斯洛伐克其他城市（如 Košice）的長途洲際列車（如 IC 或 Railjet），這類車雖然可以劃位，但因為維也納到布拉提斯拉瓦距離極短，一般旅客不需特地搭乘此車型。 [1, 2, 3, 4, 5, 6, 7]", "", "", ""], ["🎫 買票小撇步（Bratislava-Ticket）", "", "", ""], ["如果你是當天往返或在三天內回程，強烈建議在 ÖBB 官網、App 或車站自動售票機購買專屬的跨國優惠套票 Bratislava-Ticket（價格固定為 18 或 19 歐元左右）： [1, 2]", "", "", ""], ["包含項目：包含維也納往返布拉提斯拉瓦的來回火車票。", "", "", ""], ["市區交通免費：抵達布拉提斯拉瓦的第一天，可以免費且無限次搭乘布拉提斯拉瓦市區的所有大眾運輸（公車、路面電車），不需另外購票。 [1, 2, 3]", "", "", ""], ["搭乘 1 號路面電車（Tram 1） 從布拉提斯拉瓦總站（Bratislava hl.st.）前往老城區，是最復古也最方便的移動方式。車程大約只要 10 分鐘 左右。 [1, 2, 3]", "", "", ""], ["以下為你整理從出火車站到下車的完整搭乘指南：", "", "", ""], ["🗺️ 第一步：在車站尋找「電車月台」", "", "", ""], ["布拉提斯拉瓦總站的電車月台設計比較特殊，它位於車站前方廣場下方的一個露天凹槽（Tram Pit）中。 [1]", "", "", ""], ["動線：下火車後，請先穿過舊車站大廳，往「新大廳（有玻璃採光的天棚區域）」走。", "", "", ""], ["通道：在新大廳內請注意看指標，依照 Tram 的圖示左轉進入一條走廊，走到底就會看到手扶梯與樓梯，直接下樓就是 1 號電車的發車總站月台。 [1]", "", "", ""], ["🎫 第二步：車票購買與上車", "", "", ""], ["1. 如果你持有 Wien Hbf 購買的「Bratislava-Ticket」：", "", "", ""], ["不需要再買票，也不用刷卡/打卡！這張跨國套票已經包含了當天免費無限次搭乘布拉提斯拉瓦市區大眾運輸的權益，直接上車即可。遇到查票時，直接出示那張維也納火車票給查票員看即可。 [1, 2]", "", "", ""], ["2. 如果你需要單獨購票：", "", "", ""], ["感應刷卡上車（最推薦）：直接用你的信用卡或手機（Apple Pay / Google Pay）在車上的感應機刷一下即可（扣款單程約 €1.09）。", "", "", ""], ["路邊售票機：月台旁有黃色售票機，可以購買 30 分鐘票（Zone 100/101，約 €1.1~1.2）。上車後必須立刻找橘色打卡機把車票塞進去打上時間，否則會被視為逃票喔！ [1, 2, 3, 4]", "", "", ""], ["🔔 第三步：上車與下車地點選擇", "", "", ""], ["1. 上車請按鈕：不論上下車，當電車停靠時，車門通常不會自動開啟，一定要按車門上的按鈕，門才會打開。 [1, 2]", "", "", ""], ["2. 老城區下車點選擇：", "", "", ""], ["Námestie SNP 站（最推薦）：大約第 4 站。下車後就是老城區的邊緣，步行 3 分鐘就能穿過 聖米歇爾門 (Michael's Gate) 進入舊城核心區。", "", "", ""], ["Jesenského 站：大約第 5 站。下車後就是斯洛伐克國家劇院與長型步行廣場（Hviezdoslavovo námestie），同樣可以直通老城核心。 [1, 2, 3, 4]", "", "", ""], ["捷克與斯洛伐克的電車一般都非常準時且乾淨，只要注意下車要按門鈕，整個過程會非常順暢！", "", "", ""], ["🇸🇰 必吃的三大斯洛伐克傳統料理", "", "", ""], ["1. 羊起司麵疙瘩 (Bryndzové Halušky) 🌟 （國家代表菜）", "", "", ""], ["風味：用馬鈴薯與麵粉製成口感類似義式 Gnocchi 的小麵疙瘩，拌入斯洛伐克特產的 Bryndza 羊起司（質地濃郁、帶有獨特的微酸與鹹香），最後撒上酥脆的炸培根豬油渣。", "", "", ""], ["在地點法：如果同行有兩個人，許多餐廳會提供「綜合拼盤（Shepherd's Platter）」，一次能吃到羊起司麵疙瘩、羊起司餃子（Pirohy） 以及酸菜麵疙瘩（Strapačky）。 [1, 2, 3, 4, 5, 6]", "", "", ""], ["2. 麵包碗蒜頭奶油濃湯 (Cesnaková Polievka v Bochníku)", "", "", ""], ["風味：濃郁的大蒜奶油濃湯裝在烘烤得外脆內軟的巨型圓麵包碗裡，湯頭通常會加入融化的黃起司。喝完湯後，吸滿大蒜精華的麵包內壁非常美味！ [1, 2]", "", "", ""], ["3. 共產版國民可樂 (Kofola)", "", "", ""], ["風味：在斯洛伐克和捷克，點這款草本可樂的人比點 Coca-Cola 還多！它帶有一種類似甘草、中藥草與微酸柑橘的獨特香氣，甜度較低，非常解膩。 [1, 2]", "", "", ""], ["🍽️ 布拉提斯拉瓦老城區三大推薦餐廳", "", "", ""], ["如果你搭乘 路面電車 1 號線 抵達老城區周邊，這三間餐廳都在步行範圍內，各具特色： [1, 2]", "", "", ""], ["餐廳名稱", "特色與推薦理由", "預估價位 (每人)", "適合對象"], ["Bratislava Flagship Restaurant", "全歐洲最大的餐廳之一，由古老劇院改建而成，木質挑高建築極具震撼感。擁有自己的修道院釀酒廠與在地契作酪農場，羊起司與大蒜包包湯非常有名。", "€15 – €25", "初訪、喜歡壯麗復古裝潢的旅客"], ["Slovak Pub", "當地經營多年的傳奇老字號，內部如同迷宮般隔出 11 間代表不同歷史時期的主題木造房間。擁有自己的有機生態農場 (Biofarma)，食材產地直送，價格非常親民。", "€15 – €20", "預算有限、想體驗在地溫馨酒館氣氛者"], ["Modrá Hviezda (藍星)", "位於布拉提斯拉瓦城堡腳下的山坡小徑上。是一間極具情調的中世紀洞穴風石頭酒窖餐廳，這裡的羊起司麵疙瘩做得非常精緻，精選的斯洛伐克在地葡萄酒與烤鴨也備受好評。", "€25 – €50", "情侶約會、喜歡安靜浪漫、精緻餐飲者"]]}, {"id": "參考_薩爾斯堡卡", "title": "薩爾斯堡卡", "category": "景點通票", "icon": "🎫", "badge": "48h卡省 €62 & 車站左側換卡", "rows": [["非常建議購買！薩爾斯堡卡（Salzburg Card）被公認為全歐洲 CP 值最高、最划算的城市 Pass 之一。", "", ""], ["只要您打算造訪 2 個以上的收費景點，這張卡幾乎是必買的首選。", "", ""], ["1. 為什麼一定要買薩爾斯堡卡？", "", ""], ["包含所有必去核心景點門票：", "", ""], ["薩爾斯堡要塞 (Festung Hohensalzburg)：包含來回纜車與城堡內部門票（原價約 €18.00）。", "", ""], ["海爾布倫宮（亮泉宮 Hellbrunn Palace）：包含惡作劇噴泉導覽（原價約 €15.00）。", "", ""], ["莫札特出生地 (Mozart's Birthplace)：位於糧食胡同（原價約 €13.50）。", "", ""], ["莫札特故居 (Mozart's Residence)（原價約 €13.50）。", "", ""], ["溫特斯山纜車 (Untersberg Cable Car)：搭乘高空纜車看雪景（原價約 €32.00）。", "", ""], ["市區大眾運輸無限次免費搭乘：", "", ""], ["包含市區所有公車（Obus）、路面電車與區域火車。從薩爾斯堡中央車站搭乘公車到舊城區，或是搭乘公車前往海爾布倫宮、哈修塔特轉乘點，都不需再額外買票。", "", ""], ["景點快速通關（Fast Track）：", "", ""], ["在熱門景點（如要塞纜車）可直接掃卡入場，省去冬季在現場寒風中排隊購票的時間。", "", ""], ["2. 票價與回本試算（以 24 小時卡為例）", "", ""], ["24 小時卡冬季票價：約 €31.00（約台幣 $1,100）。", "", ""], ["光是走完第一天下午的行程，就能輕鬆省下近一半的門票錢：", "", ""], ["景點 / 交通", "原價單買費用", "薩爾斯堡卡折抵"], ["薩爾斯堡要塞（含纜車來回）", "18", "免費"], ["莫札特出生地", "13.5", "免費"], ["米拉貝爾宮 ➔ 舊城區市區公車", "3", "免費"], ["總計", "34.5", "已超過 24 小時卡票價 (€31)"], ["註：如果第二天上午去海爾布倫宮或搭乘溫特斯山纜車，省下的金額更是高達 €20~€30 以上！", "", ""], ["3. 如何購買與使用建議？", "", ""], ["1. 購買管道：", "", ""], ["線上預訂（最推薦）：直接在薩爾斯堡旅遊局官網或 Klook/KKday 購買電子版，存入手機即可使用。", "", ""], ["現場購買：薩爾斯堡中央車站 (Salzburg Hbf) 的旅遊諮詢中心 (Tourist Information) 或各大飯店前台皆有販售實體卡。", "", ""], ["2. 使用重點：", "", ""], ["小時制計算：從您第一次在景點或公車上刷卡激活起算 24/48 小時。", "", ""], ["行程搭配：建議在 12/11 中午抵達薩爾斯堡後啟用，效期可一路延續使用到 12/12 早上前往哈修塔特時搭乘市區公車前往巴士站，把效益發揮到最大！", "", ""], ["薩爾斯堡卡 (Salzburg Card) 24小時效益最大化：", "", ""], ["啟用時間：於 12/11（五）12:00 抵達薩爾斯堡後啟用。", "", ""], ["12/11 下午：使用卡片參觀莫札特出生地、搭乘要塞纜車登上薩爾斯堡要塞、參觀博物館，並免費搭乘市區公車。", "", ""], ["12/12 上午（壓線使用）：在 12/12 11:59 卡片到期前，免費搭乘 Bus 25 前往溫特斯山纜車 (Untersberg) 並免費感應搭乘纜車登頂（光是這趟纜車原價約 €30 就直接回本！），下山順遊海爾布倫宮。", "", ""], ["假日與景點人潮分流：", "", ""], ["12/12（六）：週六薩爾斯堡市區聖誕市集與周邊纜車人潮較多，持薩爾斯堡卡可享受快速通關，節省排隊時間。", "", ""], ["12/13（日）：週日奧地利市區多數商店（含超市）不營業，但哈修塔特（Hallstatt）作為國際觀光景點，店家與渡輪均正常營運，將哈修塔特安排在週日是最佳選擇！", "", ""], ["以下為您精確試算在 薩爾斯堡停留期間（12/11 - 12/13），購買 24 小時卡 與 48 小時卡 的景點與交通門票支出總額比較：", "", ""], ["1. 不買卡（全額單買）費用清單", "", ""], ["景點 / 交通項目", "12/12 對調後安排", "淡季單買原價 (每人)"], ["薩爾斯堡要塞（含快速來回纜車）", "12/11 下午", "18"], ["莫札特出生地 (Mozart's Birthplace)", "12/11 下午", "13.5"], ["莫札特故居 (Mozart's Residence)", "12/12 下午", "13.5"], ["溫特斯山纜車 (Untersberg Cable Car)", "12/12 上午", "32"], ["海爾布倫宮 / 亮泉宮 (Hellbrunn Palace)", "12/12 下午", "15"], ["市區公車（來回車站、溫特斯山 Bus 25）", "12/11 - 12/12 多次", "約 €10.00"], ["原價總計", "", "€102.00（約台幣 $3,600）"], ["2. 方案 A：購買「24 小時卡」（€31.00）— CP 值最高！", "", ""], ["卡片啟用時間：12/11（五）12:00 啟用 ➔ 12/12（六）11:59 到期。", "", ""], ["卡片涵蓋項目：", "", ""], ["12/11 下午：要塞纜車 + 薩爾斯堡要塞（€18）、莫札特出生地（€13.50）、市區公車（€3）。", "", ""], ["12/12 上午（到期前壓線）：搭乘 Bus 25 到溫特斯山，並在 11:59 前感應搭乘溫特斯山纜車（€32）。", "", ""], ["自費項目（12/12 12:00 到期後）：", "", ""], ["海爾布倫宮門票（€15.00）+ 下午回市區單程公車（€3.00）+ 莫札特故居（€13.50）= 自費 €31.50。", "", ""], ["總支出：購卡 €31.00 + 後續自費 €31.50 = €62.50", "", ""], ["總共省下：€39.50（約台幣 $1,400 / 人）", "", ""], ["3. 方案 B：購買「48 小時卡」（€40.00）— 玩得最輕鬆無壓力", "", ""], ["卡片啟用時間：12/11（五）12:00 啟用 ➔ 12/13（日）11:59 到期。", "", ""], ["卡片涵蓋項目：全數涵蓋 12/11 及 12/12 所有景點門票與所有市區/溫特斯山公車車資。", "", ""], ["自費項目：無（全包在卡內）。", "", ""], ["總支出：購卡 €40.00", "", ""], ["總共省下：€62.00（約台幣 $2,200 / 人）", "", ""], ["兩者比較與推薦", "", ""], ["評估指標", "方案 A：24 小時卡", "方案 B：48 小時卡（最推薦）"], ["票卡費用", "31", "40"], ["預估總交通+門票支出", "62.5", "40"], ["每人可省下金額", "省 €39.50", "省 €62.00"], ["時間壓力與靈活性", "需在 12/12 11:59 前搭上溫特斯山纜車，時間較緊湊", "完全免看時間，12/12 全天公車與景點隨意免費使用"], ["終極建議：", "", ""], ["強烈建議選擇 48 小時卡（€40.00）！只要多加 €9 歐元，不僅能多省下近 €22.50 的費用，且在 12/12 上午去溫特斯山纜車時完全不需要趕 12:00 前劃卡，整體節奏會舒服輕鬆許多。", "", ""], ["1. ÖBB 火車票（Wien Hbf → Salzburg Hbf）", "", ""], ["使用方式：依照前述步驟在 App 內點擊「Get tickets」產生的 QR Code（或在車站紅色售票機印出的實體紙本票），這組 QR Code 僅供火車車上查票使用。 [1] [1]", "", ""], ["2. 薩爾茲堡卡 48 Hours（Salzburg Card）", "", ""], ["如何領取：你在 ÖBB 點擊取票或列印時，這份加購項目會以「兌換券（Voucher）」的形式呈現。 [1]", "", ""], ["實體兌換點：抵達薩爾茲堡中央車站（Salzburg Hbf）後，你需要到火車站內的 薩爾茲堡旅遊服務中心 (Tourist Information)（位於大廳主要入口左側走廊，每日 09:00–17:00/18:00 營業），出示手機 App 內的加購憑證或信箱兌換券，換取一張實體感應晶片卡。 [1, 2]", "", ""], ["啟用機制：換到實體卡後，它不會立刻開始計時。當你在薩爾茲堡第一次進入景點（如薩爾茲堡要塞纜車）或搭乘市區公車時感應那張卡片，卡片的「48小時」連續計時才會正式啟動。 [1, 2, 3]", "", ""], ["因此，火車上的查票員無法感應薩爾茲堡卡；同樣地，薩爾茲堡的景點與公車也無法讀取你的火車 QR Code。到了現場記得先去車站的服務中心兌換喔！", "", ""]]}, {"id": "參考_薩爾斯堡到哈修塔特", "title": "薩爾斯堡到哈修塔特", "category": "景點通票", "icon": "🏔️", "badge": "Bus 150 + REX 3412 + 渡輪", "rows": [["這段從薩爾斯堡到哈修塔特的交通組合，總耗時約 2 小時 15 分鐘至 2 小時 20 分鐘（包含兩次轉乘等候時間）。"], ["詳細的時間拆解與路線如下："], ["⏱️ 各段時間與轉乘拆解"], ["1. 第一段：搭乘 Bus 150 巴士"], ["路線：薩爾斯堡中央車站 (Salzburg Hbf) ➔ 巴德伊舍 (Bad Ischl)"], ["發車時間：08:15 – 09:37"], ["行車時間：約 1 小時 22 分鐘"], ["2. 第一步轉乘：巴德伊舍火車站 (Bad Ischl Bahnhof)"], ["等候時間：約 20–25 分鐘（從公車下車點步行約 1 分鐘即達火車月台，時間非常充裕，可在車站稍微休息或上洗手間）。"], ["3. 第二段：搭乘 ÖBB REX 3412 火車"], ["路線：巴德伊舍 (Bad Ischl) ➔ 哈修塔特火車站 (Hallstatt Bahnhof)"], ["發車時間：約 10:02 – 10:24"], ["行車時間：約 22 分鐘"], ["4. 第二步轉乘與渡輪：Stefanie 渡輪"], ["路線：哈修塔特火車站碼頭 ➔ 哈修塔特舊城區碼頭 (Hallstatt Markt)"], ["銜接方式：渡輪班次與火車抵達時間是完全固定搭配的，下火車後順著人流走下階梯（約 1-2 分鐘）即到碼頭。"], ["船程時間：約 8–10 分鐘"], ["💡 乘車小提醒"], ["抵達時間：整趟行程約在 10:35 – 10:40 順利抵達哈修塔特舊城區碼頭，剛好可以展開完美的哈修塔特日遊。"], ["巴士與火車付款/票券："], ["Bus 150：可上車直接向司機刷卡或付現買票（買到 Bad Ischl），亦可在 ÖBB App 預先購買。"], ["渡輪 (Stefanie)：渡輪不屬於 ÖBB 或薩爾斯堡卡範圍，需在船上直接向船員購買單程/來回船票（僅收現金，單程約 €3.5–€4.0）。"], ["Bus 150 路線超出了薩爾斯堡卡的免費使用範圍，相關規定說明如下："], ["1. 薩爾斯堡卡的大眾運輸範圍限制"], ["薩爾斯堡卡僅涵蓋 薩爾斯堡市區（Zone S / Stadt Salzburg） 內的大眾運輸（如市區電車 Obus、市區公車）。 Bus 150 雖然起點在薩爾斯堡中央車站，但它的路線會一路開出市區，跨區駛往阿爾卑斯山湖區（Salzkammergut）的巴德伊舍（Bad Ischl）。"], ["2. Bus 150 的票價與建議搭乘方式"], ["票價：從薩爾斯堡 (Salzburg Hbf) 到巴德伊舍 (Bad Ischl) 的單程車資約 €11.00 - €12.00 / 人。"], ["購票方式："], ["1. 上車直接購買：上車時直接向司機刷卡或付現購票。"], ["2. ÖBB App 預先購票：可直接在 ÖBB App 輸入起終點預先買好電子票。"], ["省錢小貼士：如果是在 ÖBB App 或現場購票，可以直接選擇起點 Salzburg Hbf、終點 Hallstatt Bahnhof，系統會直接開立「Bus 150 + REX 火車」的聯程票，購買起來非常方便！"]]}, {"id": "參考_布拉格交通票", "title": "布拉格交通票", "category": "交通票券", "icon": "🇨🇿", "badge": "72h+24h通票 & PID App 激活", "rows": [["購買 Pass 可以無限次搭乘布拉格市區的地鐵（Metro A/B/C 線）、路面電車（Tram）、公車以及佩特任山纜車，完全不用每次找售票機買單程票。", "", "", ""], ["布拉格市區交通 Pass 種類與票價", "", "", ""], ["通票類型", "官方票價 (CZK)", "約合台幣 (TWD)", "計時方式與特色"], ["24小時通票 (24 hours)", "120 CZK", "約 $160", "啟用後 24 小時內無限次搭乘所有市區大眾運輸。"], ["72小時通票 (72 hours)", "330 CZK", "約 $440", "最推薦！ 啟用後 72 小時內無限次搭乘（包含佩特任山纜車）。"], ["布拉格遊客卡 (Prague Visitor Pass)", "2,100 CZK 起 (2/3/5日)", "約 $2,800 起", "包含無限次交通 + 免費進入布拉格城堡、天文鐘塔頂等 70+ 景點。"], ["使用重點與建議", "", "", ""], ["1. 搭配建議（布拉格 4 晚）：", "", "", ""], ["建議購買 「1 張 72 小時通票」+「1~2 張 24 小時通票」（或依據最後一天搭車需求加買單程票），即可完美覆蓋您在布拉格所有的移動行程。", "", "", ""], ["2. 啟用刷票規定（極重要）：", "", "", ""], ["紙本票：第一次搭乘地鐵/Tram 時，必須將票插入黃色驗票機「打卡蓋時間章」，啟用後計時；若搭乘時票上無時間章，會被視為無票乘車，罰款非常嚴格。", "", "", ""], ["電子票 (PID Lítačka App)：推薦下載官方 App PID Lítačka 直接購買，需在搭車前於手機上點擊「Activate（激活）」，App 會有 2 分鐘倒數，倒數結束即可使用。", "", "", ""], ["3. 機場交通適用性：", "", "", ""], ["119 號公車轉地鐵：普通交通 Pass 可以直接使用！搭乘 119 號公車至 Nádraží Veleslavín 站轉地鐵 A 線進出機場，不需額外加價。", "", "", ""], ["AE 機場快線 (Airport Express)：屬於特殊直達巴士，無法使用一般交通 Pass，需單獨向司機購票（約 100 CZK）。", "", "", ""], ["布拉格景點雖然集中，但伏爾塔瓦河兩岸與前往高堡區、城堡區都有斜坡或長樓梯，冬天下雪或刮風時，有 Pass 隨時跳上 Tram 電車會舒服非常多！", "", "", ""]]}, {"id": "參考_布拉格伏爾塔瓦河遊船", "title": "布拉格伏爾塔瓦河遊船", "category": "遊船體驗", "icon": "⛵", "badge": "魔鬼河木船 & 碼頭位置", "rows": [["在布拉格搭船遊覽伏爾塔瓦河（Vltava），最迷人的體驗是能從河面上以獨特角度仰望查理大橋（Charles Bridge）與山頂上的布拉格城堡（Prague Castle）。", "", "", ""], ["與布達佩斯主打大氣磅礴的夜景不同，布拉格的遊船更偏向精緻、文藝與微醺放鬆。以下為您整理購票管道、最佳時間與價格分析：", "", "", ""], ["1. 價格與船種分類", "", "", ""], ["布拉格的遊船選擇多元，主要分為短程觀光船、生態木造船與餐飲遊船：", "", "", ""], ["遊船類型", "包含內容", "平均價格 (每人)", "特色與推薦對象"], ["經典 50 分鐘觀光船", "50 分鐘航程，經過查理大橋下，含音訊導覽（多數有中文）", "€14 – €18", "性價比高！ 時間短而精華，適合想拍照、走累了想休息的旅客。"], ["(最熱門選擇)", "", "(約 CZK 350 – 450)", ""], ["魔鬼河微型木船", "45 分鐘小木船，深入查理大橋下的「魔鬼河」水道，含免費啤酒/飲料、冰淇淋與水上博物館門票", "€20 – €24", "超推薦！ 能穿過古老水車與狹窄水道，富有波希米亞威尼斯風情。"], ["(Prague Venice / Devil's Canal)", "", "(約 CZK 500 – 600)", ""], ["全景玻璃景觀船", "1–2 小時航程，採用現代化全景玻璃船身，視野絕佳，含迎賓酒", "€22 – €30", "船廂溫暖舒適，冬季防風防寒首選。"], ["(Prague Boats - Eco Boats)", "", "(約 CZK 550 – 750)", ""], ["午餐 / 晚餐遊船", "2–3 小時航程 + 自助餐或三道式餐點 + 爵士樂/鋼琴現場演奏", "€45 – €80+", "適合浪漫約會或體驗夜間音樂氛圍。"], ["", "", "(約 CZK 1,100 – 2,000)", ""], ["2. 何時買？（最佳搭乘時間與預訂時機）", "", "", ""], ["最佳搭乘時段", "", "", ""], ["夕陽至黃昏時分（冬日約 16:00 – 17:30）：看著夕陽將查理大橋與城堡染成金黃色，隨後華燈初上，景色最具層次。", "", "", ""], ["白天下法（11:00 – 14:00）：若選擇「魔鬼河小木船」，白天採光最好，非常適合拍攝舊城區的水道與建築細節。", "", "", ""], ["預訂時機", "", "", ""], ["預訂時機：建議提前 3 – 7 天 在線上預訂熱門時段（特別是黃昏班次或魔鬼河木船）；若是淡季的一般日間觀光船，提前 1 天 或 當天現場買 通常也有位置。", "", "", ""], ["3. 怎麼買？（購票管道與碼頭位置）", "", "", ""], ["線上預訂（推薦，免排隊且可確保熱門時段）", "", "", ""], ["1. 中文旅遊平台（Klook / KKday）：搜尋「布拉格 伏爾塔瓦河遊船」或「布拉格威尼斯木船」，可以直接預訂熱門班次，到現場出示手機憑證即換票登船。", "", "", ""], ["2. 國際票券平台（GetYourGuide / Viator）：品項最齊全，可以查看當日實時剩餘座位與全球旅客評價。", "", "", ""], ["3. 官網預訂：", "", "", ""], ["Prague Venice（布拉格威尼斯）：專營魔鬼河特色小木船。", "", "", ""], ["Prague Boats：布拉格最大的遊船公司，包含玻璃船與晚餐船。", "", "", ""], ["現場購票", "", "", ""], ["主要碼頭位置：", "", "", ""], ["查理大橋橋頭碼頭 (Judita Pier)：位於舊城區查理大橋塔旁的 Charles Bridge Museum 附近，是 Prague Venice 小木船 的發船點。", "", "", ""], ["切赫橋碼頭 (Čech Bridge Pier / Dvořákovo nábřeží)：位於舊城區北側，是 Prague Boats 大型觀光船與餐船 的主要集中搭乘處。", "", "", ""], ["💡 搭船實用小建議", "", "", ""], ["1. 認清乘船地點：布拉格不同的遊船公司分屬不同碼頭，下訂後務必確認憑證上的集合地點（Pier / Dock 名稱），以免跑錯碼頭。", "", "", ""], ["2. 冬季保暖與選擇：12 月河面風大體感溫度低，若搭乘一般觀光船，建議選擇有室內暖氣艙（如全景玻璃船）的車型；若搭乘魔鬼河小木船，船上通常會提供毛毯與熱紅酒/熱飲保暖。", "", "", ""]]}, {"id": "參考_跨國車票與專車的預訂時間", "title": "跨國車票與專車的預訂時間", "category": "交通票券", "icon": "📅", "badge": "搶票時間軸", "rows": [["跨城與跨國車票預訂時間表", "", ""], ["路線 / 交通工具", "建議預訂時間", "預訂平台 / 說明"], ["ÖBB 火車", "開放訂票即搶（約 2~3 個月前）", "ÖBB 官網 / App"], ["(維也納 ➔ 布達佩斯 / 布達佩斯 ➔ 薩爾斯堡)", "", "12 月為歐洲聖誕冬季旺季，越早訂越能搶到優惠票（Sparschiene），且長途車程（特別是布達佩斯至薩爾斯堡搭乘 5.5 小時）務必加購指定席劃位（Seat Reservation）。"], ["跨國接駁專車 (CK Shuttle / Bean Shuttle)", "1.5 ~ 2 個月前", "CK Shuttle / Bean Shuttle 官網"], ["(薩爾斯堡 ➔ 庫倫洛夫 CK 小鎮)", "", "專車為九人座小巴士門對門接送，熱門時段與熱門點（如薩爾斯堡直達 CK 小鎮）班次有限，額滿極快，建議提早預訂。"], ["長途大巴 (RegioJet / FlixBus)", "1 個月前", "RegioJet 或 FlixBus 官網 / App"], ["(庫倫洛夫 ➔ 布拉格)", "", "CK 小鎮前往布拉格的巴士班次頻繁，1 個月前預訂即可確保選到理想的班次與座位。"], ["ÖBB 區域火車 (REX 1)", "出發前 1~2 天或當天現場", "ÖBB App / 機場/車站售票機"], ["(維也納 ↔ 斯洛伐克布拉提斯拉瓦一日遊)", "", "屬於區域短途列車，票價固定且不限班次，出發當天或前一天在 App 購買 Bratislove Ticket 即可，無須過早預訂。"], ["薩爾斯堡 ↔ 哈修塔特一日遊", "當天現場購票", "現場 / 150 號公車司機"], ["(Bus 150 + 火車 + 渡輪)", "", "若搭乘大眾運輸，Bus 150 上車向司機購票即可；若打算改搭 Shuttle Bus 專車，則建議 1 個月前 先線上預約。"]]}, {"id": "參考_布拉格到機場交通", "title": "布拉格到機場交通", "category": "機場退稅", "icon": "🛫", "badge": "12/18 退稅時間軸 & Bolt/Uber", "rows": [["最後一天（12/18）從布拉格市區前往布拉格瓦茨拉夫·哈維爾機場（PRG），因班機為 10:30 起飛，您最遲需要在 07:30 前抵達機場辦理 Check-in、託運行李與退稅。"], ["建議的交通方式、出發時間與細節如下："], ["1. 最推薦方案：叫車服務（Bolt / Uber / 飯店預約專車）"], ["對於帶著大件行李且清晨出發的旅客，這是最舒適且最不折騰的選擇。"], ["建議出發時間：06:45 – 07:00 從飯店出發。"], ["車程時間：清晨市區不塞車，約 25 – 30 分鐘直達機場第一/第二航廈。"], ["車資預算：約 400 – 600 CZK（約合台幣 $550 – $800）。"], ["優點：司機直接到飯店門口載行李，不用在 12 月清晨的寒風中拖著大行李箱走石板路搭地鐵轉乘。"], ["2. CP 值最高方案：大眾運輸（地鐵 A 線 + 59 號電車/公車）"], ["如果您購買了布拉格市區交通 Pass，此路線可以免費搭乘（包含在 Pass 內）。"], ["建議出發時間：06:30 從飯店出發。"], ["搭乘路線："], ["1. 搭乘地鐵 A 線（綠線） 至 Nádraží Veleslavín 站。"], ["2. 出站後轉乘 59 號無軌電車（Trolleybus 59） 直達機場。"], ["車程時間：地鐵約 10–15 分鐘 + 電車約 17 分鐘，含轉乘總共約 40 – 45 分鐘。"], ["優點：班次極密集（清晨約 5–10 分鐘一班），費用便宜或免額外花費。"], ["3. 不推薦方案：AE 機場快線（Airport Express Bus）"], ["不推薦原因：AE 巴士由布拉格中央車站 (Hlavní nádraží) 發車，單程 100 CZK 且無法使用一般交通 Pass。清晨班次較少，且行李放置空間有限，相比之下叫車或搭 59 號電車更為方便。"], ["最後一天機場時間預估（12/18）"], ["06:45 辦理退房，搭乘 Bolt / Uber 出發。"], ["07:15 – 07:30 抵達布拉格機場（退稅櫃檯蓋章領款 + 航空公司 Check-in + 託運行李）。"], ["08:30 – 09:00 通過安檢與護照查驗，前往免稅店採買或貴賓室休息。"], ["09:45 – 10:00 開始登機。"], ["10:30 班機起飛返台。"]]}]};
+    const ITINERARY = TRIP_DATA.itinerary;
+    const REF_SHEETS = TRIP_DATA.refSheets;
 
     const CHECKLIST_ITEMS = [
-      "ÖBB App 購買「維也納 7 日通票 (€25.20)」＋「機場到 Schwechat 單程延伸票 (€2.20)」",
-      "ÖBB App 跨國火車票（RJX267、RJX 62、RJX 160、IC 641 + EC 334）並完成劃位",
+      "ÖBB App 購買「維也納 7 日通票 (€25.20，12/03–12/09 通用)」＋「機場到 Schwechat 單程延伸票 (約 €2.20)」",
+      "ÖBB App 跨國火車票（RJX267、RJX 62、RJX 160、IC 641 + EC 334）並於出發當天按 Get tickets 產生 QR Code",
       "出發前一天於 ÖBB App 購買 Bratislava-Ticket (€19)",
-      "薩爾斯堡卡 48 小時兌換憑證（抵達 Salzburg Hbf 左側走廊旅遊中心換實體卡）",
-      "下載 BudapestGO App（布達佩斯 72h 通票）與 PID Lítačka App（布拉格 72h+24h 通票）",
-      "熱門餐廳預約：Figlmüller、New York Café、Ribs of Vienna、Imperial Café",
+      "薩爾斯堡卡 48 小時兌換憑證（抵達 Salzburg Hbf 大廳左側走廊旅遊中心換取實體感應晶片卡）",
+      "下載 BudapestGO App（布達佩斯 72h 通票）與 PID Lítačka App（布拉格 72h+24h 通票，搭車前按 Activate 倒數 2 分鐘）",
+      "熱門餐廳線上預約：Figlmüller、New York Café、Ribs of Vienna、Imperial Café",
       "布達佩斯塞切尼溫泉裝備：泳衣、夾腳拖、大浴巾"
     ];
 
-    let currentDay = 1;
+    let currentDay = 1; // 預設開啟 Day 2 (12/03 維也納) 方便直接檢視最新更新
     const weatherCache = {};
 
     function mapLink(q) {
@@ -535,8 +238,8 @@
       const el = document.getElementById("dayScroller");
       el.innerHTML = ITINERARY.map((item, idx) => `
         <button class="day-pill ${idx === currentDay ? 'active' : ''}" onclick="selectDay(${idx})">
-          Day ${item.day}
-          <span>${item.date.split(' ')[0]} ${item.city}</span>
+          Day ${item.dayNum}
+          <span>${item.date.slice(5)} ${item.city}</span>
         </button>
       `).join("");
     }
@@ -565,58 +268,58 @@
       const item = ITINERARY[idx];
       const box = document.getElementById("dayContent");
 
+      const timelineHtml = (item.timeline || []).map(ev => {
+        const dotCls = ev.type === '餐廳' ? 'food' : (ev.type === '交通' ? 'trans' : '');
+        const badgeCls = ev.type === '餐廳' ? 'badge-amber' : (ev.type === '交通' ? 'badge-blue' : 'badge-red');
+        const cleanQuery = ev.title.split('（')[0].split('(')[0].replace(/抵達|搭乘|飯店退房|出發前往/g, '').trim();
+        return `
+          <div class="tl-item">
+            <div class="tl-dot ${dotCls}"></div>
+            <div class="tl-top">
+              <span class="tl-time">🕒 ${ev.time}</span>
+              <span class="badge ${badgeCls}">${ev.type}</span>
+            </div>
+            <div class="tl-title">${ev.title}</div>
+            <div class="tl-desc">${ev.desc}</div>
+            ${ev.type !== '交通' ? `<a class="map-btn" href="${mapLink(cleanQuery + ' ' + item.city)}" target="_blank">📍 Google 地圖導航</a>` : ''}
+          </div>
+        `;
+      }).join("");
+
       box.innerHTML = `
         <div class="card">
-          <div style="display:flex;justify-content:space-between;align-items:center;">
-            <span class="badge badge-red">DAY ${item.day}・${item.date}</span>
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;">
+            <span class="badge badge-red">DAY ${item.dayNum}・${item.date} (${item.weekday})</span>
             <span class="badge badge-blue">${item.country}・${item.city}</span>
           </div>
 
-          <div class="depart-banner">⏰ 飯店出發提醒：${item.depart}</div>
+          <div class="depart-banner">⏰ 飯店出發提醒：${item.departHotel}</div>
 
-          <div class="weather-box" id="weatherBox">
+          <div class="weather-box">
             <div>
-              <div style="font-weight:700;color:#0c4a6e;">🌤️ 當地氣候參考（${item.city}）</div>
-              <div style="color:#0369a1;">12月冬季均溫：${item.winter}</div>
+              <div style="font-weight:700;color:#0c4a6e;">🌤️ 當地氣候與雨雪參考（${item.city}）</div>
+              <div style="color:#0369a1;">12月均溫 ${item.winterTemp}｜降雨機率 ${item.winterRain}</div>
             </div>
             <div style="text-align:right;">
-              <div class="weather-temp" id="liveTemp">載入即時氣溫...</div>
-              <div style="font-size:11px;color:#0284c7;" id="liveRain">Open-Meteo</div>
+              <div class="weather-temp" id="liveTemp">載入中...</div>
+              <div style="font-size:11px;color:#0284c7;" id="liveRain">即時氣象</div>
             </div>
           </div>
 
           <div class="notice-box">⚠️ <strong>當日重要注意事項：</strong>${item.notice}</div>
 
-          <div class="section-title">🚄 交通與推薦班次規劃</div>
-          <div style="font-size:13px;background:#f9fafb;padding:10px;border-radius:8px;border:1px solid #e5e7eb;">
-            ${item.transport}
-          </div>
+          <div class="section-title">🗓️ 當日詳細時間表（交通・景點・餐廳）</div>
+          <div class="timeline">${timelineHtml}</div>
 
-          <div class="section-title">📍 必去景點與 Google 地圖導航</div>
-          ${item.spots.map(s => `
-            <div class="item-row">
-              <span class="item-name">${s}</span>
-              <a class="map-btn" href="${mapLink(s + ' ' + item.city)}" target="_blank">📍 Google 地圖</a>
-            </div>
-          `).join("")}
-
-          <div class="section-title">🍽️ 必吃美食與咖啡館導航</div>
-          ${item.foods.map(f => `
-            <div class="item-row">
-              <span class="item-name">${f}</span>
-              <a class="map-btn" href="${mapLink(f.split('（')[0] + ' ' + item.city)}" target="_blank">🍴 Google 地圖</a>
-            </div>
-          `).join("")}
-
-          ${item.refs.length ? `
-            <div class="section-title">📚 本日關聯參考攻略（點擊查看）</div>
+          ${(item.relatedSheets && item.relatedSheets.length) ? `
+            <div class="section-title">📚 本日關聯參考攻略（點擊直接查看）</div>
             <div>
-              ${item.refs.map(r => `<span class="ref-chip" onclick="openGuide('${r}')">📖 ${r}</span>`).join("")}
+              ${item.relatedSheets.map(r => `<span class="ref-chip" onclick="openGuide('${r}')">📖 ${r.replace('參考_', '')}</span>`).join("")}
             </div>
           ` : ""}
 
-          <a class="hotel-nav-btn" href="${mapLink(item.hotelQuery)}" target="_blank">
-            🏨 一鍵 Google 地圖導航回飯店（${item.hotel}）
+          <a class="hotel-nav-btn" href="${item.hotelMap}" target="_blank">
+            🏨 一鍵 Google 地圖導航回飯店（${item.hotelName}）
           </a>
         </div>
       `;
@@ -626,24 +329,59 @@
         document.getElementById("liveTemp").textContent = `即時 ${live.temp}`;
         document.getElementById("liveRain").textContent = `降雨機率 ${live.rain}`;
       } else if (document.getElementById("liveTemp")) {
-        document.getElementById("liveTemp").textContent = item.winter.split('/')[0];
-        document.getElementById("liveRain").textContent = "冬季氣候參考";
+        document.getElementById("liveTemp").textContent = item.winterTemp;
+        document.getElementById("liveRain").textContent = item.winterRain;
       }
+    }
+
+    function renderSheetRows(rows) {
+      let html = "";
+      let tableBuffer = [];
+
+      const flushTable = () => {
+        if (!tableBuffer.length) return;
+        html += `<table class="ref-table">`;
+        tableBuffer.forEach((r, idx) => {
+          const tag = idx === 0 ? "th" : "td";
+          html += `<tr>${r.map(c => `<${tag}>${c}</${tag}>`).join("")}</tr>`;
+        });
+        html += `</table>`;
+        tableBuffer = [];
+      };
+
+      rows.forEach(r => {
+        const nonEmpty = r.filter(c => c && c.trim() !== "");
+        if (nonEmpty.length > 1) {
+          tableBuffer.push(r.slice(0, Math.max(2, nonEmpty.length)));
+        } else if (nonEmpty.length === 1) {
+          flushTable();
+          const txt = nonEmpty[0];
+          const isHeading = /^[0-9]+\.|^[📱⚠️🎫🗺️🔔🇸🇰🍽️⏱️💡]/.test(txt);
+          html += `<div class="ref-row" style="${isHeading ? 'font-weight:700;color:#8b2635;margin-top:6px;' : ''}">${txt}</div>`;
+        }
+      });
+      flushTable();
+      return html;
     }
 
     function renderGuides(filter = "") {
       const list = document.getElementById("guidesList");
       const kw = filter.trim().toLowerCase();
-      list.innerHTML = GUIDES.filter(g => !kw || g.title.toLowerCase().includes(kw) || g.html.toLowerCase().includes(kw))
-        .map(g => `
-          <div class="ref-card ${kw ? 'open' : ''}" id="guide-${g.id}">
-            <div class="ref-header" onclick="this.parentElement.classList.toggle('open')">
-              <span>${g.title}</span>
-              <span>▼</span>
+      list.innerHTML = REF_SHEETS.filter(s => {
+        if (!kw) return true;
+        return s.title.toLowerCase().includes(kw) || JSON.stringify(s.rows).toLowerCase().includes(kw);
+      }).map(s => `
+        <div class="ref-card ${kw ? 'open' : ''}" id="guide-${s.id}">
+          <div class="ref-header" onclick="this.parentElement.classList.toggle('open')">
+            <div>
+              <div>${s.icon} ${s.title}</div>
+              ${s.badge ? `<span class="badge badge-green" style="margin-top:4px;">${s.badge}</span>` : ''}
             </div>
-            <div class="ref-body">${g.html}</div>
+            <span>▼</span>
           </div>
-        `).join("");
+          <div class="ref-body">${renderSheetRows(s.rows)}</div>
+        </div>
+      `).join("");
     }
 
     function openGuide(id) {
@@ -700,7 +438,7 @@
     }
 
     document.getElementById("guideSearch").addEventListener("input", e => renderGuides(e.target.value));
-    selectDay(1); // 預設顯示 DAY 2 (12/03 維也納) 方便確認最新修改
+    selectDay(1);
     renderGuides();
     renderChecklist();
   </script>
